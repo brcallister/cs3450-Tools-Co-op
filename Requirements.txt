@@ -1,0 +1,58 @@
+Original Requirements
+1. People aren't bringing tools back so tools aren't there when needed
+2. Someone comes in wanting 15 things, has 14
+3.  Identify tools need more of
+4.  Checked out for a week at a time
+5. Charge monthly fee to use them
+6.  Request checkout for longer time
+7. Tool sets
+8. Flat fee
+9. Break tool (reasonably) they replace.  Lost - user pays
+10. Ways to identify users and what they have
+11. Tools to be replaced, requested but not there
+12. List of tools and categories
+13. Way to notify customers when tools are due
+14. Walk in or request online
+15. Joe - check out and in, bad and missing, view user accounts
+16. Monthly limit on rentals - (don't worry about it now)
+17. Have membership card with number and picture
+18. Wants to audit tool
+19. People to have access to tools
+20. Database of users/tools/checkout system
+21. Keep track of number of times checked out
+22. Reports
+23. Tell them to buy better hardware
+
+
+
+CUCPV Requirements:
+1. Way to keep track of where all tools are.
+2. Way to prevent race conditions in checkout process
+3. Identify which tools we need more of
+
+
+
+
+
+
+
+MoSCoW Report:
+
+
+
+
+
+
+
+Team Requirements:
+
+Application language -> C#
+Database -> SQL, AWS
+Frontend -> Javascript, HTML, CSS
+Git -> Github
+Diagram -> LucidChart
+Process Manager -> TBD
+
+
+
+
