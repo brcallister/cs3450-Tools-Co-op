@@ -32,20 +32,18 @@ CUCPV Requirements:
 
 
 
-
-
-
-
-MoSCoW Report:
-
-
-
-
+MoSCoW Report (from original requirements)
+Must:
+4,5,10,11,12,14,20
+Should:
+3,9,13,17,21,23
+Could:
+6,7,15,16,18,22
+Won't:
 
 
 
 Team Requirements:
-
 Application language -> C#
 Database -> SQL, AWS
 Frontend -> Javascript, HTML, CSS
