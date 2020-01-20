@@ -66,6 +66,20 @@ Won't:
 
 
 
+***REQUIREMENTS BY AUDIENCE***
+Business:
+
+User:
+
+Funtional:
+
+Nonfunctional:
+
+Implementation:
+
+
+
+
 ***TEAM REQUIREMENTS***
 Application language -> C#
 Database -> SQL, AWS
