@@ -1,4 +1,4 @@
-Original Requirements
+***ORIGINAL REQUIREMENTS***
 1. People aren't bringing tools back so tools aren't there when needed
 2. Someone comes in wanting 15 things, has 14
 3.  Identify tools need more of
@@ -25,14 +25,36 @@ Original Requirements
 
 
 
-CUCPV Requirements:
+
+***CUCPV REQUIREMENTS***
 1. Way to keep track of where all tools are.
 2. Way to prevent race conditions in checkout process
 3. Identify which tools we need more of
+4. Customers should only be able to check out tools for a week at time
+5. Way to charge/collect payment from customers (in the form of a monthly payment)
+6. Way to allow customers to extend current reservation
+7. List of and way for customers to check out tool sets
+8. Monthly fees are not affected by number of tools checked out
+9. Way to charge users for lost tools, and order new tools when broken reasonably
+10. Way to identify users, as well as who currently has what
+11. Way to keep track of requests for tools that are broken/requested but not available
+12. List of tools and tool sets (by category)
+13. Way to notify customers when tools are due
+14. Way for customers to request either online or in-person
+15. Way for employees to check tools in/out, mark as bad/missing, and view user accounts
+16. Way to limit number of rentals - (currently not necessary)
+17. Keep track of membership cards, linked with member id number and picture
+18. Way to audit a tool (see when/who it has been checked out by)
+19. Main priority is for users to have access to tools
+20. Create a way to keep track of users/tools/checkout system
+21. Keep track of number of times items have been requested/checked out
+22. Way to view reports on users/tools/finance.
+23. Inform company what hardware upgrades will be needed to facilitate changes
 
 
 
-MoSCoW Report (from original requirements)
+
+***MOSCOW REPORT*** (from original requirements)
 Must:
 4,5,10,11,12,14,20
 Should:
@@ -43,7 +65,8 @@ Won't:
 
 
 
-Team Requirements:
+
+***TEAM REQUIREMENTS***
 Application language -> C#
 Database -> SQL, AWS
 Frontend -> Javascript, HTML, CSS
