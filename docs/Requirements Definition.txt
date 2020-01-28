@@ -4,6 +4,14 @@ GROUP:
 -Josh Webster
 -Katelynn Call
 
+***OVERVIEW***
+
+This project aims to build a system that facilitates a library-like loaning system for tools.
+
+The tool system will allow users to reserve tools through our website, while also providing them with specific instructions and information related to the transaction.  The underlying database will keep track of customer accounts, lists of available tools and toolsets, and a superuser account that will allow employees to audit both tools and customers.
+
+
+
 ***ORIGINAL REQUIREMENTS***
 
 1. People aren't bringing tools back so tools aren't there when needed
@@ -141,6 +149,15 @@ Nonfunctional:
 Implementation:
 23. Inform company what hardware upgrades will be needed to facilitate changes
 
+
+
+***CONCLUSION***
+
+As part of our first sprint, we will continue to gather requirements, create use-case diagrams, and organize our data so that we can plan consistantly with the customer's wants and needs in mind.
+
+Our next sprints will include implementation and testing phases, during which this document will become an important reference for validating our work with the customer's needs.
+
+Currently our plan is to create a web-based service through which both customers and employees can easily find information, reserve tools, and perform necessary operations.
 
 
 ***TEAM REQUIREMENTS***
