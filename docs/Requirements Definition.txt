@@ -125,7 +125,7 @@ User:
 15. Way for employees to check tools in/out, mark as bad/missing, and view user accounts
 19. Main priority is for users to have access to tools
 
-Funtional:
+Functional:
 1. Way to keep track of where all tools are.
 3. Identify which tools we need more of
 7. List of and way for customers to check out tool sets
@@ -153,7 +153,7 @@ Implementation:
 
 ***CONCLUSION***
 
-As part of our first sprint, we will continue to gather requirements, create use-case diagrams, and organize our data so that we can plan consistantly with the customer's wants and needs in mind.
+As part of our first sprint, we will continue to gather requirements, create use-case diagrams, and organize our data so that we can plan consistently with the customer's wants and needs in mind.
 
 Our next sprints will include implementation and testing phases, during which this document will become an important reference for validating our work with the customer's needs.
 
@@ -167,7 +167,7 @@ Database -> SQL, AWS
 Frontend -> Javascript, HTML, CSS
 Git -> Github
 Diagram -> LucidChart
-Process Manager -> TBD
+Process Manager -> ClickUp
 
 
 
