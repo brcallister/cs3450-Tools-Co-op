@@ -25,3 +25,6 @@ As far as unit testing goes our plan is to have the author of the original code 
 
 System testing will be a more rigorous iteration of what was described for the unit testing instructions, but this process will be applied to the system. Each team member will take a turn trying to test the program, with emphasis on how different parts of the program interact with others. If bugs are found, the source will be repaired, and unit tested before attempting another system test.
 
+## Configuration management procedures:
+
+We are using ClickUp as our configuration management software.  We use it to create tasks, assign them out equally, and mark things as "in progress".  Once the software is written, it is updated to "review" status, where all group members check it for quality, before it is finally marked as "done".
