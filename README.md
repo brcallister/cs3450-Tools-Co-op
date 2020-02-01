@@ -4,7 +4,7 @@
 
 ## Version-control procedures:
 
-Tool stack description and setup procedure:
+## Tool stack description and setup procedure:
 
 ## Build instructions:
 
