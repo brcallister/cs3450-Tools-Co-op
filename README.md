@@ -11,7 +11,7 @@ We will be using Git version control to help maintain the documentation of the p
 
 ## Tool stack description and setup procedure:
 
-The tools we will be using for this project is C#, JavaScript, HTML, CSS, SQL, and potentially AWS. The front-end will be comprised of JavaScript, HTML, and CSS. C# will be the main language for our back-end components. SQL will create and manage our database. 
+The tools we will be using for this project is C#, JavaScript, HTML, CSS, SQL, and potentially AWS. The front-end will be comprised of JavaScript, HTML, and CSS. C# will be the main language for our back-end components. SQL will create and manage our database. Our database will be comprised of several tables representing tools, customers, and employees.  We will have a server application that while running, allows users to connect to and interact with our website.  Through user input (which is throughly checked and certifiably secure), the database will be updated and maintained automatically.
 
 ## Build instructions:
 
