@@ -28,3 +28,7 @@ System testing will be a more rigorous iteration of what was described for the u
 ## Configuration management procedures:
 
 We are using ClickUp as our configuration management software.  We use it to create tasks, assign them out equally, and mark things as "in progress".  Once the software is written, it is updated to "review" status, where all group members check it for quality, before it is finally marked as "done".
+
+## Scrum Board History:
+
+Our scrum history is recorded on ClickUp.  As part of our scrum procedures, we recorded time estimates for each task, who was assigned to each task, as well as when the task was eventually completed.  All of this was done under the supervision of Josh, our scrum master.
