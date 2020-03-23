@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Account settings template. Bootstrap 4 Admin HTML Theme is a material design and bootstrap 4 based responsive dashboard template by propeller created mainly for admin and backend applications.">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Dan's Tool Rentals</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Toolshop/accountLayout.css' %}">
+
+    <link rel="shortcut icon" type="image/x-icon" href="themes/images/favicon.ico">
+
+    <!-- Google icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Rubik Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700" rel="stylesheet">
+
+    <!-- build:remove -->
+    <!--Admin css-->
+    <link rel="stylesheet" type="text/css" href="styles/accountLayout.css">
+    <!-- /build -->
+
+    <!-- build:include snippets/css-files-404.html -->
+    <!-- /build -->
+
+    <!-- build:remove -->
+    <!--Google Analytics code-->
+
+    <!-- Canonical Tag -->
+    <link rel="canonical" href="#" />
+    <!-- /build -->
+
+</head>
+
+<body>
+
+<div class="wrapper row1" style="padding-left: 300px">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="index.html">Dan's Tool Rentals</a></h1>
+      <br>
+      <h2>(Address for Dan's Tool Rentals can go here)</h2>
+    </div>
+    <form action="#" method="post" style="padding-right: 300px">
+      <fieldset>
+        <div style="padding-right: 0px">
+          <button class="menuButtons" style="height: 23.4px" "font:bold;"> Customer </button>
+        </div>
+        <div style="padding-right: 110px">
+          <button class="menuButtons" style="height: 23.4px" "font:bold;"> My Tools </button>
+        </div>
+        <div style="padding-right: 220px">
+            <button class="menuButtons" style="height: 23.4px" "font:bold;"> Misc. </button>
+        </div>
+      </fieldset>
+      </fieldset>
+      <p>  </p>
+      <fieldset>
+        <legend>Search:</legend>
+        <input type="text" style="width: 410px" value="Search Our Website&hellip;" onFocus="this.value=(this.value=='Search Our Website&hellip;')? '' : this.value ;">
+        <input type="submit" id="sf_submit" value="submit">
+      </fieldset>
+    </form>
+    <nav>
+      <ul>
+        <li><a href="hammers.html">Hammers!</a></li>
+        <li><a href="wrenches.html">Wrenches!</a></li>
+        <li><a href="drills.html">Drills!</a></li>
+        <li><a href="ohMy.html">Oh my!</a></li>
+        <li class="last"><a href="#">We can keep adding more and more here....</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<!-- Header Ends -->
+
+<!-- Sidebar Starts -->
+<div class="pmd-sidebar-overlay"></div>
+
+<!-- Left sidebar -->
+<aside id="basicSidebar" class="pmd-sidebar pmd-sidebar-dark pmd-sidebar-slide-push pmd-sidebar-open bg-primary pmd-z-depth-light-2" role="navigation" >
+	<ul class="nav flex-column pmd-sidebar-nav">
+		
+		<!-- User info -->
+        <li class="nav-item pmd-user-info mb-0">
+            <a href="javascript:void(0);" class="nav-link btn-user text-center">
+                <img class="rounded-circle m-auto" src="images/surprised.jpg" width="40" height="40" alt="avatar">
+                <h3 class="pmd-title m-0">Potential Customer</h3>
+            </a>
+        </li>
+        <!-- End user info -->
+		
+		<li class="nav-item">
+            <a class="nav-link pmd-ripple-effect" href="#">
+                <i class="material-icons pmd-list-icon pmd-sm md-light">
+                    <svg version="1.1" x="0px" y="0px" width="19.83px" height="18px" viewBox="287.725 407.535 19.83 18" enable-background="new 287.725 407.535 19.83 18" xml:space="preserve">
+                        <g><path d="M307.555,407.535h-9.108v10.264h9.108V407.535z M287.725,407.535v6.232h9.109v-6.232H287.725z M296.834,415.271h-9.109v10.264h9.109V415.271z M307.555,419.303h-9.108v6.232h9.108V419.303z" /></g>
+                    </svg>
+                </i>
+                <span class="media-body">Dashboard</span>
+            </a>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link pmd-ripple-effect" href="#">
+                <i class="material-icons pmd-list-icon pmd-sm md-light">
+                    inbox
+                </i>
+                <span class="media-body">Account Summary</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link pmd-ripple-effect" href="#">
+                <i class="material-icons pmd-list-icon pmd-sm md-light">
+                    today
+                </i>
+                <span class="media-body">Due Dates</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link pmd-ripple-effect" href="#">
+                <i class="material-icons pmd-list-icon pmd-sm md-light">
+                    notifications
+                </i>
+                <span class="media-body">Notifications</span>
+            </a>
+        </li>
+
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="material-icons pmd-list-icon pmd-sm md-light">
+                    call
+                </i>
+                <span class="media-body">Contact</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#">
+                <i class="material-icons pmd-list-icon pmd-sm">
+                    pages
+                </i>
+                <span class="media-body">Other Pages</span>
+                <div class="media-right media-bottom"><i class="dic-more-vert dic"></i></div>
+            </a>
+            <ul class="collapse" id="thirdpartyelements" data-parent="#basicSidebar">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Alerts and Warnings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">404</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">404 with Sidebar</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link pmd-ripple-effect" href="#">
+                <i class="material-icons pmd-list-icon pmd-sm md-light">
+                    settings
+                </i>
+                <span class="media-body">Account Settings</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="material-icons pmd-list-icon pmd-sm">power_settings_new</i>
+                <span class="media-body">Logout</span>
+            </a>
+        </li>
+	</ul>
+</aside>
+<!-- End Left sidebar -->
+<!-- Sidebar Ends -->
+
+<!--content area start-->
+<div id="content" class="pmd-content admin section-container">
+    <!-- Title -->
+    <h1>Account Settings</h1>
+    <!-- End Title -->
+    
+    <!--breadcrum start-->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb pmd-breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Account Settings</li>
+        </ol>
+    </nav>
+    <!--breadcrum end-->
+
+    <div class="page-content">
+        <!-- Change Password -->
+        <div class="card pmd-card single-col-form">
+            <div class="card-header">
+                <h3 class="card-title">Change Password</h3>
+                <p class="card-subtitle">It's a good idea to use a strong password that you don't use elsewhere.</p>
+            </div>
+            <div class="card-body">
+                <form id="changepasswordform" method="post" action="">
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label for="currentpassword" style="padding-bottom:20pt" class="col-form-label">Current</label>
+                        <input type="password" class="form-control" id="currentpassword" name="currentpassword">
+                    </div>
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label for="password" style="padding-bottom:20pt" class="col-form-label">New Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label for="repeatpassword" style="padding-bottom:20pt" class="col-form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="repeatpassword" name="repeatpassword">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary pmd-ripple-effect pmd-btn-raised" name="signup" value="Update Password">Update Password</button> <button class="btn btn-outline-secondary pmd-ripple-effect" type="reset">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Email Notifications -->
+        <div class="card pmd-card mb-0 single-col-form">
+            <div class="card-header">
+                <h3 class="card-title">Email Notifications</h3>
+                <p class="card-subtitle">Email notifications will be sent for leave applications, emails, profile updates, recent birthdays and work anniversaries when you are offline.</p>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="custom-control custom-radio pmd-radio">
+                        <input type="radio" id="Immediately" name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label pmd-radio-ripple-effect" for="Immediately">Send Immediately</label>
+                    </div>
+                    <div class="custom-control custom-radio pmd-radio">
+                        <input type="radio" id="Never" name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label pmd-radio-ripple-effect" for="Never">Never Send</label>
+                    </div>
+                    <div class="mt-3">
+                        <button type="submit" class="btn btn-primary pmd-ripple-effect pmd-btn-raised" name="update-password" value="Update Password">Save</button> <button class="btn btn-outline-secondary pmd-ripple-effect" type="reset">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content area end -->
+
+<!-- Footer Starts -->
+<footer class="pmd-footer">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 align-self-center">
+				<div class="pmd-site-info">
+					<p class="fl_left">Copyright &copy; 2020 - All Rights Reserved - <a href="#">DansToolRentals.com</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- Footer Ends -->
+
+<!-- build:include snippets/js-files-account-settings.html -->
+<!-- /build -->
+
+
+
+</body>
+</html>
