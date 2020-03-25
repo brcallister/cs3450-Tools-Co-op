@@ -26,5 +26,5 @@ class CustomerInfo(models.Model):
 
     this_period_paid = models.BooleanField(default=False)
     date_paid_until = models.DateTimeField(blank=True, null=True)
-    num_currently_checked_out = models.PositiveIntegerField()
-    current_outstanding_balance = models.PositiveIntegerField(blank=True)
+    num_currently_checked_out = models.PositiveIntegerField(default=0)
+    current_outstanding_balance = models.PositiveIntegerField(blank=True, default=0)
