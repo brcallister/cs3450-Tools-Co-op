@@ -34,6 +34,7 @@
         <input type="submit" id="sf_submit" value="submit">
       </fieldset>
     </form>
+    
     <nav>
       <ul>
         <li><a href="hammers.html">Hammers!</a></li>
@@ -50,31 +51,37 @@
   <div id="container" class="clear">
 
     <section id="gallery" class="clear">
-      <figure>
-        <header>If you can dodge a wrench....</header>
-        <ul>
-          <li><a href="#"><img src="images/wrench1.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/wrench2.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/wrench1.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/wrench2.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/wrench3.jpg" alt=""></a></li>
-          <li class="last"><a href="#"><img src="images/wrench3.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/wrench2.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/wrench1.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/wrench3.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/wrench1.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/wrench2.jpg" alt=""></a></li>
-          <li class="last"><a href="#"><img src="images/wrench2.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/wrench1.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/wrench3.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/wrench2.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/wrench1.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/wrench3.jpg" alt=""></a></li>
-          <li class="last"><a href="#"><img src="images/wrench2.jpg" alt=""></a></li>
-        </ul>
-        <figcaption>Description for the wrenches</figcaption>
-      </figure>
-    </section>
+          <form action="redirect.html">
+
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="firstname">
+          
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lastname">
+
+              <label for="email">Email</label>
+              <input type="email" id="email" name="emailAddress">
+
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject">
+              <textarea id="textBody" name="textBody" placeholder="Ask us questions and we'll get back to you!" style="height:200px"></textarea>
+          
+              <input type="submit" value="Submit">
+
+      </form>
+
+      <div id="googleMap" style="width:100%;height:400px;"></div>
+
+      <script>
+          function myMap() {
+              var mapProp= {
+                center:new google.maps.LatLng(51.508742,-0.120850),
+                zoom:5,
+              };
+              var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+          }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsc7DlveTKCwakCItrarBNKLAsu3VORUQ&callback=myMap"></script>
 
   </div>
 </div>
