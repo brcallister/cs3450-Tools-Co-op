@@ -1,5 +1,6 @@
 import datetime
 
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -16,3 +17,13 @@ class Tool(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class CustomerInfo(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone_num = models.CharField(max_length=25)
+    address = models.TextField()
+
+    this_period_paid = models.BooleanField(default=False)
+    date_paid_until = models.DateTimeField(blank='true', null=True)
+    num_currently_checked_out = models.PositiveIntegerField()
