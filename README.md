@@ -32,3 +32,7 @@ We are using ClickUp as our configuration management software.  We use it to cre
 ## Scrum Board History:
 
 Our scrum history is recorded on ClickUp.  As part of our scrum procedures, we recorded time estimates for each task, who was assigned to each task, as well as when the task was eventually completed.  All of this was done under the supervision of Josh, our scrum master.
+
+## Startup Instructions:
+
+Startup instructions are included as a markdown (.md) file in the docs section.  Please see that file to learn about installing, running, and using the web server.
