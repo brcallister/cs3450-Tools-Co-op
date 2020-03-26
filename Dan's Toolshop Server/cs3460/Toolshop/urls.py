@@ -11,4 +11,5 @@ urlpatterns = [
     path('wrenches/', views.wrenches_page, name='wrenches'),
     path('drills/', views.drills_page, name='drills'),
     path('ohMy/', views.oh_my_page, name='ohMy'),
+    path('database_upload', views.database_upload, name='database_upload')
 ]

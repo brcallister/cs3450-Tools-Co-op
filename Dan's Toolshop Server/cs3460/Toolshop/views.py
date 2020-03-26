@@ -1,7 +1,11 @@
+import csv, io
+from django.contrib import messages
+from django.contrib.auth.decorators import permission_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.utils import timezone
+from .models import Tool
 
 #from .models import TOOLS CLASSES
 
@@ -48,6 +52,31 @@ def oh_my_page(request):
     return render(request, 'Toolshop/ohMy.html', context)
 
 
+@permission_required('admin.can_add_log_entry')
+def database_upload(request):
+    template = "Toolshop/database_upload.html"
+    prompt = {
+        'order': 'Order of CSV should be category, name, value, quantity, on-hand, checked-out'
+    }
+    if request.method == "GET":
+        return render(request, template, prompt)
+    csv_file = request.FILES['file']
+    if not csv_file.name.endswith('.csv'):
+        messages.error(request, "This is not a CSV file")
+    data_set = csv_file.read().decode('UTF-8')
+    io_string = io.StringIO(data_set)
+    next(io_string)
+    for column in csv.reader(io_string, delimiter=','):
+        _, created = Tool.objects.update_or_create(
+            category=column[0],
+            name=column[1],
+            cost=column[2],
+            times_checked_out=0
+        )
+    context = {
+
+    }
+    return render(request, template, context)
 
 
 
