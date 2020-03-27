@@ -6,6 +6,7 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'Toolshop/layout.css' %}">
   <link rel="shortcut icon" type="image/png" href="{% static 'Toolshop/favicon.ico' %}"/>
+
 </head>
 <body>
 <div class="wrapper row1">
@@ -42,7 +43,25 @@
 
     <section id="gallery" class="clear">
       <figure>
-        <header>Drills drill and more drills</header>
+        <header>Our Wonderful Selection of Tools!</header>
+        <ul>
+          <li><a onclick="displayTools(bike_tools)">Bike Tools</a></li>
+          <li><a onclick="displayTools(bike_tools)">Carpentry & Woodworking</a></li>
+          <li><a onclick="displayTools(bike_tools)">Carpet</a></li>
+          <li><a onclick="displayTools(bike_tools)">Cement</a></li>
+          <li><a onclick="displayTools(bike_tools)">Drywall & Masonry</a></li>
+          <li><a onclick="displayTools(bike_tools)">Electrical & Mechanical</a></li>
+          <li><a onclick="displayTools(bike_tools)">Garden</a></li>
+          <li><a onclick="displayTools(bike_tools)">Power</a></li>
+          <li><a onclick="displayTools(bike_tools)">Kitchen</a></li>
+          <li><a onclick="displayTools(bike_tools)">Other</a></li>
+
+        </ul>
+
+        <div id="EDIT_ME_IN_THE_JAVASCRIPT">
+
+        </div>
+
         <ul>
           <!-- TODO: Rewrite in javascript -->
           <!-- <li><a href="#"><img src="images/drill1.jpg" alt=""></a></li>
@@ -64,7 +83,7 @@
           <li><a href="#"><img src="images/drill3.jpg" alt=""></a></li>
           <li class="last"><a href="#"><img src="images/drill2.jpg" alt=""></a></li> -->
         </ul>
-        <figcaption>Description for the drills</figcaption>
+        <figcaption>Description for the tools</figcaption>
       </figure>
     </section>
 
