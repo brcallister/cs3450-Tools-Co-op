@@ -42,9 +42,29 @@
   <div id="container" class="clear">
     <!-- content body -->
     <!-- main content -->
-    Next plan is to put a list of all tools here
     <div id="homepage">
-
+      {% if tools_list %}
+		<table cellspacing="20">
+          <tr>
+            <th>Name:</th>
+            <th>Category:</th>
+            <th></th>
+          </tr>
+			{% for tool in tools_list %}
+          <tr>
+            <td>{{tool.name}}</td>
+            <td>{{tool.category}}</td>
+            {% if tool.is_checked_out %}
+            <td>Not Currently Available</td>
+            {% else %}
+            <td><a href="{% url 'Toolshop:index' %}">Available.  Click here to reserve.</a></td>
+            {% endif %}
+          </tr>
+			{% endfor %}
+		</table>
+		{% else %}
+    		<p>No tools found.</p>
+		{% endif %}
     </div>
     <!-- / content body -->
   </div>

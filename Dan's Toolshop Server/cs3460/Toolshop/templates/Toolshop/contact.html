@@ -37,54 +37,52 @@
     </nav>
   </header>
 </div>
-<!-- content -->
 <div class="wrapper row2">
   <div id="container" class="clear">
-    <!-- content body -->
-    <!-- main content -->
+    <div class="container" style="border:1px solid #ccc">
+        <form action="redirect.html">
+          <div class="container">
 
-    <div id="homepage">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname">
+            <br>
+            <br>
 
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname">
+            <br>
+            <br>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="emailAddress">
+            <br>
+            <br>
+            
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject">
+            <br>
+            <br>
+
+            <textarea id="textBody" name="textBody" placeholder="Ask us questions and we'll get back to you!" style="height:200px"></textarea>
+            <br>
+            <br>
+            
+            <input type="submit" value="Submit">
+          </div>
+        </form>
+        <div id="googleMap" style="width:100%;height:400px;">
+        </div>
+        <script>
+            function myMap() {
+                var mapProp= {
+                  center:new google.maps.LatLng(51.508742,-0.120850),
+                  zoom:5,
+                };
+                var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsc7DlveTKCwakCItrarBNKLAsu3VORUQ&callback=myMap"></script>
     </div>
-    <!-- / content body -->
-  </div>
-</div>
-<div class="wrapper row2">
-  <div id="container" class="clear">
-
-    <section id="gallery" class="clear">
-          <form action="redirect.html">
-
-              <label for="fname">First Name</label>
-              <input type="text" id="fname" name="firstname">
-
-              <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="lastname">
-
-              <label for="email">Email</label>
-              <input type="email" id="email" name="emailAddress">
-
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject">
-              <textarea id="textBody" name="textBody" placeholder="Ask us questions and we'll get back to you!" style="height:200px"></textarea>
-
-              <input type="submit" value="Submit">
-
-      </form>
-
-      <div id="googleMap" style="width:100%;height:400px;"></div>
-
-      <script>
-          function myMap() {
-              var mapProp= {
-                center:new google.maps.LatLng(51.508742,-0.120850),
-                zoom:5,
-              };
-              var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-          }
-      </script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsc7DlveTKCwakCItrarBNKLAsu3VORUQ&callback=myMap"></script>
-
   </div>
 </div>
 

@@ -4,7 +4,7 @@
 <title>Dan's Tool Rentals</title>
 <meta charset="UTF-8">
   {% load static %}
-  <link rel="stylesheet" href="{% static 'Toolshop/accountLayout.css' %}">
+  <link rel="stylesheet" href="{% static 'Toolshop/layout.css' %}">
   <link rel="shortcut icon" type="image/png" href="{% static 'Toolshop/favicon.ico' %}"/>
 </head>
 <body>
@@ -40,61 +40,54 @@
 <!-- content -->
 <div class="wrapper row2">
   <div id="container">
-    <!-- content body -->
-
-<!-- Left sidebar -->
-  <div class="container" style="border:1px solid #ccc">
-
-    <div class="container">
-      <h1>Account Information</h1>
-
-      
-      <p>Tools Currently Checked Out: <a href="toolCheckedOut"> list of tools here </a></p>
-      <p>Tools Due Date: <a href="toolCheckedOut"> tool due dates here </a></p>
-      <p>Outstanding Balance: <a href="balance"> balance here </a></p>
-
-
-    </div>
-
-    <hr>
-    <form action="action_page.php">
+    <div class="container" style="border:1px solid #ccc">
       <div class="container">
-        <h1>Update Account Information</h1>
-        <br>
-        <br>
-        <label for="firstName"><b>First Name</b></label>
-        <input type="text" placeholder="First Name" name="firstName" required>
-
-        <label for="lastName"><b>Last Name</b></label>
-        <input type="text" placeholder="Last Name" name="lastName" required>
-
-        <label for="address"><b>Address</b></label>
-        <input type="text" placeholder="Address" name="address" required>
-
-        <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="Enter Email" name="email" required>
-    
-        <label for="psw"><b>Change Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-        <br>
-        <br>
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-        <br>
-        <br>
-        <div class="clearfix">
-          <button type="button" class="cancelbtn">Cancel</button>
-          <button type="submit" class="signupbtn">Update</button>
-        </div>
+        <h1>Account Information</h1>
+        <p>Tools Currently Checked Out: <a href="toolCheckedOut"> list of tools here </a></p>
+        <p>Tools Due Date: <a href="toolCheckedOut"> tool due dates here </a></p>
+        <p>Outstanding Balance: <a href="balance"> balance here </a></p>
       </div>
-    </form>
+      <hr>
+      <form action="action_page.php">
+        <div class="container">
+          <h1>Update Account Information</h1>
+          <br>
+          <br>
+          <label for="firstName"><b>First Name</b></label>
+          <input type="text" placeholder="First Name" name="firstName" required>
+          <br>
+          <br>
 
-  </div>
-<!-- End Left sidebar -->
-<!-- Sidebar Ends -->
-    <!-- main content -->
+          <label for="lastName"><b>Last Name</b></label>
+          <input type="text" placeholder="Last Name" name="lastName" required>
+          <br>
+          <br>
 
-    <!-- / content body -->
+          <label for="address"><b>Address</b></label>
+          <input type="text" placeholder="Address" name="address" required>
+          <br>
+          <br>
+
+          <label for="email"><b>Email</b></label>
+          <input type="email" placeholder="Enter Email" name="email" required>
+          <br>
+          <br>
+
+          <label for="psw"><b>Change Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+          <br>
+          <br>
+          <label for="psw-repeat"><b>Repeat Password</b></label>
+          <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+          <br>
+          <br>
+          <div class="clearfix">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn">Update</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 <!-- Footer -->

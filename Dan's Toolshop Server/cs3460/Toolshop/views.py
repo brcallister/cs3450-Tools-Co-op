@@ -28,6 +28,15 @@ def account_page(request):
 
 @login_required
 def reservation_page(request):
+    tools_list = Tool.objects.all()
+    context = {
+        'tools_list': tools_list
+    }
+    return render(request, 'Toolshop/reservation.html', context)
+
+
+@login_required
+def reservation_page_specific(request):  # This page has the results trimmed down by a search query
     context = {
 
     }

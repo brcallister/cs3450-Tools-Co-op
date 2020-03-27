@@ -11,6 +11,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('account/', views.account_page, name='account'),
     path('reserve/', views.reservation_page, name='reserve'),
+    path('reserve/<str:contains>', views.reservation_page_specific, name='reserve_spec'),
     path('tools/', views.tools_page, name='tools'),
     path('projects/', views.projects_page, name='projects'),
     path('contact/', views.contact_page, name='contact'),
