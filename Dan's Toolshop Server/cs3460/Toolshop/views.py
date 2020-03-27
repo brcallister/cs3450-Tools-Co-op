@@ -82,8 +82,6 @@ def redirection_page(request):
 
 
 
-
-
 @permission_required('admin.can_add_log_entry')
 def database_upload(request):
     template = "Toolshop/database_upload.html"
@@ -99,12 +97,16 @@ def database_upload(request):
     io_string = io.StringIO(data_set)
     next(io_string)
     for column in csv.reader(io_string, delimiter=','):
-        _, created = Tool.objects.update_or_create(
-            category=column[0],
-            name=column[1],
-            cost=column[2],
-            times_checked_out=0
-        )
+        print(int(column[3]))
+        for i in range(int(column[3])):
+            print("creating " + column[1])
+            created = Tool(
+                category=column[0],
+                name=column[1],
+                cost=column[2],
+                times_checked_out=0
+            )
+            created.save()
     context = {
 
     }
