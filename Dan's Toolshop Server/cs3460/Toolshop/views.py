@@ -28,7 +28,7 @@ def account_page(request):
 
 @login_required
 def reservation_page(request):
-    tools_list = Tool.objects.all()
+    tools_list = Tool.objects.order_by('category')
     context = {
         'tools_list': tools_list
     }
@@ -36,9 +36,12 @@ def reservation_page(request):
 
 
 @login_required
-def reservation_page_specific(request):  # This page has the results trimmed down by a search query
+def reservation_page_specific(request, contains):  # This page has the results trimmed down by a search query
+    if request.POST.get('query') is not None:
+        contains = request.POST.get('query')
+    tools_list = Tool.objects.filter(name__contains=contains).order_by('category')
     context = {
-
+        'tools_list': tools_list
     }
     return render(request, 'Toolshop/reservation.html', context)
 
