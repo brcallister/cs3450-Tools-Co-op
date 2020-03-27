@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>Dan's Tool Rentals</title>
+<meta charset="UTF-8">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'Toolshop/layout.css' %}">
+  <link rel="shortcut icon" type="image/png" href="{% static 'Toolshop/favicon.ico' %}"/>
+</head>
+<body>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="{% url 'Toolshop:index' %}">Dan's Tool Shop
+      <img src="{% static 'Toolshop/logo.jpg' %}" style="width:15%"></a></h1>
+    </div>
+      <form action="#" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+      <fieldset>
+        <div style="padding-right: 0px">
+          <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:account' %}">Account</a> </button>
+        </div>
+        <div style="padding-right: 110px">
+          <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:reserve' %}">Reserve a Tool</a> </button>
+        </div>
+      </fieldset>
+      </fieldset>
+    </form>
+
+    <nav>
+      <ul>
+        <li><a href="{% url 'Toolshop:tools' %}">Our Tools</a></li>
+        <li><a href="{% url 'Toolshop:projects' %}">Our Projects</a></li>
+        <li><a href="{% url 'Toolshop:contact' %}">Contact Us!</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<!-- content -->
+<div class="wrapper row2">
+  <div id="container" class="clear">
+    <!-- content body -->
+    <!-- main content -->
+    Next plan is to put a list of all tools here
+    <div id="homepage">
+
+    </div>
+    <!-- / content body -->
+  </div>
+</div>
+<!-- Footer -->
+<div class="wrapper row3">
+  <footer id="footer" class="clear">
+    <p class="fl_left">Copyright &copy; 2020 - All Rights Reserved - <a href="#">DansToolShop.com<br><img src="{% static 'Toolshop/logo.jpg' %}" style="width:15%"> </a></p>
+    <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+  </footer>
+</div>
+</body>
+<script src="script.js"></script>
+</html>

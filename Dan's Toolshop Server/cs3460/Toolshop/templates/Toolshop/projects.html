@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>Dan's Tool Rentals</title>
+<meta charset="UTF-8">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'Toolshop/layout.css' %}">
+  <link rel="shortcut icon" type="image/png" href="{% static 'Toolshop/favicon.ico' %}"/>
+</head>
+<body>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="{% url 'Toolshop:index' %}">Dan's Tool Shop
+      <img src="{% static 'Toolshop/logo.jpg' %}" style="width:15%"></a></h1>
+    </div>
+      <form action="#" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+      <fieldset>
+        <div style="padding-right: 0px">
+          <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:account' %}">Account</a> </button>
+        </div>
+        <div style="padding-right: 110px">
+          <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:reserve' %}">Reserve a Tool</a> </button>
+        </div>
+      </fieldset>
+      </fieldset>
+    </form>
+
+    <nav>
+      <ul>
+        <li><a href="{% url 'Toolshop:tools' %}">Our Tools</a></li>
+        <li><a href="{% url 'Toolshop:projects' %}">Our Projects</a></li>
+        <li><a href="{% url 'Toolshop:contact' %}">Contact Us!</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+  <div class="wrapper row2">
+  <div id="container" class="clear">
+
+      <section id="services" class="clear">
+        <!-- article 1 -->
+        <article class="one_third">
+          <h2><a id="project1">Home Renovation - Made Simple</a></h2>
+          <img src="{% static 'Toolshop/project1.jpg' %}" alt="" style="height:960;width:900px;">
+          <p> Meet Mark. He's the handsome man in the picture during the renovation of the manliest mancave that all men would be proud of. How did he do it without owning any of the necessary tools? By borrowing ours! Don't let the lack of hardware hold you back from having the house you deserve. </p>  
+
+          <p> As a homeowner, it can be a gratifying experience to install things yourself and help save costs overall. One of the key ways you can save on expenses is by installing household items through a DIY process. Certain renovation projects are not that tough to tackle on your own and can be well worth the investment. However, it's difficult to get some of these projects done without the hardware to do it. That's where we can help. Give us a call to ask about what you need and how we can help. </p>
+
+        </article>
+        <br>
+        <!-- article 2 -->
+        <article class="one_third">
+          <h2><a id="project2">Larger Living Rooms - Let's get it done</a></h2>
+          <img src="{% static 'Toolshop/project2.jpg' %}" alt="" style="height:960;width:900px;">
+          <p>James was tired of thinking to himself that his condo was much larger on the outside than it felt on the inside. The previous owners of the place had built the place with extra rooms for their large family. James and his wife only had two children, which meant that many rooms were going to waste. Leaving the ones that were being used feeling cramped and clustered. </p>
+          <p>James wanted to knock down a few of the walls to open the place up and make it feel more like home; the problem was his lack of hardware. That's where we can come to the rescue. By borrowing our tools James was able to open his home and enjoy every possible square foot for an affordable price. Give us a call to find out what he used and what other projects you might be able to do with our tools!</p>
+        </article>
+        <br>
+        <!-- article 3 -->
+        <article class="one_third lastbox">
+          <h2><a id="project3">Refurnishing Made Simple - We can help!</a></h2>
+          <img src="{% static 'Toolshop/project3.jpg' %}" alt="" style="height:960;width:900px;">
+          <p>Chris and Chloe were tired of their old fireplace falling apart and wanted a replacement. After hearing how much it would cost to have someone replace it they figured that they would never be able to afford it. Then they found us! </p>
+          <p>By borrowing our tools at an affordable price Chris and Chloe were not only able to replace their fireplace but were able to get new tile to match it! Borrowing our tools cuts out the expensive middleman and lets you take control of any home improvement projects that you need done. Give us a call to find out how they did it and what we can do to help you too. </p>
+        </article>
+        <br>
+        <!-- article 4 -->
+        <article class="one_third lastbox">
+          <h2><a id="project4">Make Your Kitchen Modern</a></h2>
+          <img src="{% static 'Toolshop/project4.jpg' %}" alt="" style="height:960;width:900px;">
+          <p>Jack and Jill had lived in their rundown home for their first six months of being married. They'd tolerated the cabinets that creaked, the drawers that didn't slide all the way in, and the leaky faucet for long enough. They investigated remodeling but were discourage by the price of having professionals do it for them. They figured they would just have to wait until they were ready to move to a better home. Luckily for them they discovered Dan's Toolshop .</p>
+          <p>By borrowing our hardware they were able to keep the costs of remodeling their rundown kitchen within their newlywed budget and were able to make their kitchen a modern masterpiece. The best part is they did it themselves. Here at Dan's Toolshop we can help you turn those rundown rooms of yours into whatever you can imagine a fraction of the price. </p>
+        </article>
+      </section>
+
+  </div>
+</div>
+<!-- Footer -->
+<div class="wrapper row3">
+  <footer id="footer" class="clear">
+    <p class="fl_left">Copyright &copy; 2020 - All Rights Reserved - <a href="#">DansToolShop.com<br><img src="{% static 'Toolshop/logo.jpg' %}" style="width:15%"> </a></p>
+    <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+  </footer>
+</div>
+</body>
+<script src="script.js"></script>
+</html>
