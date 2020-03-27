@@ -12,10 +12,28 @@ from .models import Tool, CustomerInfo
 
 
 def index(request):  # Main page
-    context = {
-
-    }
+    context = {}
     return render(request, 'Toolshop/index.html', context)
+
+
+def projects_page(request):
+    context = {}
+    return render(request, 'Toolshop/projects.html', context)
+
+
+def tools_page(request):
+    context = {}
+    return render(request, 'Toolshop/tools.html', context)
+
+
+def contact_page(request):
+    context = {}
+    return render(request, 'Toolshop/contact.html', context)
+
+
+def login_page(request):
+    context = {}
+    return render(request, 'Toolshop/login.html', context)
 
 
 @login_required
@@ -28,7 +46,7 @@ def account_page(request):
 
 @login_required
 def reservation_page(request):
-    tools_list = Tool.objects.all()
+    tools_list = Tool.objects.order_by('category')
     context = {
         'tools_list': tools_list
     }
@@ -36,39 +54,20 @@ def reservation_page(request):
 
 
 @login_required
-def reservation_page_specific(request):  # This page has the results trimmed down by a search query
+def reservation_page_specific(request, contains):  # This page has the results trimmed down by a search query
+    if request.POST.get('query') is not None:
+        contains = request.POST.get('query')
+    tools_list = Tool.objects.filter(name__contains=contains).order_by('category')
     context = {
-
+        'tools_list': tools_list
     }
     return render(request, 'Toolshop/reservation.html', context)
 
 
-def login_page(request):
+def make_reservation(request):
     context = {
-
     }
-    return render(request, 'Toolshop/login.html', context)
-
-
-def tools_page(request):
-    context = {
-
-    }
-    return render(request, 'Toolshop/tools.html', context)
-
-
-def projects_page(request):
-    context = {
-
-    }
-    return render(request, 'Toolshop/projects.html', context)
-
-
-def contact_page(request):
-    context = {
-
-    }
-    return render(request, 'Toolshop/contact.html', context)
+    return render(request, 'Toolshop/reservation.html', context)
 
 
 def redirection_page(request):
@@ -76,7 +75,6 @@ def redirection_page(request):
 
     }
     return render(request, 'Toolshop/redirect.html', context)
-
 
 
 @permission_required('admin.can_add_log_entry')

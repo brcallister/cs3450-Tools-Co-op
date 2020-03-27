@@ -12,3 +12,20 @@ function showSlides() {
   slides[slideIndex-1].style.display = "block";
   setTimeout(showSlides, 15000); // Change image every 2 seconds
 }
+
+getUrlVars();
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars.type;
+}
+
+function displayTools(type) {
+    if(type=="bike_tools")
+    { alert("Test")
+    }
+    //TODO: When the backend is hooked up loop through tools and display ones with this type
+}
