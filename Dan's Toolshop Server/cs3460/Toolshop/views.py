@@ -12,10 +12,28 @@ from .models import Tool, CustomerInfo
 
 
 def index(request):  # Main page
-    context = {
-
-    }
+    context = {}
     return render(request, 'Toolshop/index.html', context)
+
+
+def projects_page(request):
+    context = {}
+    return render(request, 'Toolshop/projects.html', context)
+
+
+def tools_page(request):
+    context = {}
+    return render(request, 'Toolshop/tools.html', context)
+
+
+def contact_page(request):
+    context = {}
+    return render(request, 'Toolshop/contact.html', context)
+
+
+def login_page(request):
+    context = {}
+    return render(request, 'Toolshop/login.html', context)
 
 
 @login_required
@@ -46,32 +64,10 @@ def reservation_page_specific(request, contains):  # This page has the results t
     return render(request, 'Toolshop/reservation.html', context)
 
 
-def login_page(request):
+def make_reservation(request):
     context = {
-
     }
-    return render(request, 'Toolshop/login.html', context)
-
-
-def tools_page(request):
-    context = {
-
-    }
-    return render(request, 'Toolshop/tools.html', context)
-
-
-def projects_page(request):
-    context = {
-
-    }
-    return render(request, 'Toolshop/projects.html', context)
-
-
-def contact_page(request):
-    context = {
-
-    }
-    return render(request, 'Toolshop/contact.html', context)
+    return render(request, 'Toolshop/reservation.html', context)
 
 
 def redirection_page(request):
@@ -79,7 +75,6 @@ def redirection_page(request):
 
     }
     return render(request, 'Toolshop/redirect.html', context)
-
 
 
 @permission_required('admin.can_add_log_entry')

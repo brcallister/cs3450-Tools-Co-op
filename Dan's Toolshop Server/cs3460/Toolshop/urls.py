@@ -8,6 +8,7 @@ from . import views
 app_name = 'Toolshop'
 
 urlpatterns = [
+    # The main website pages
     path('', views.index, name='index'),
     path('account/', views.account_page, name='account'),
     path('reserve/', views.reservation_page, name='reserve'),
@@ -15,6 +16,12 @@ urlpatterns = [
     path('tools/', views.tools_page, name='tools'),
     path('projects/', views.projects_page, name='projects'),
     path('contact/', views.contact_page, name='contact'),
+
+    # Actions
+    path('makeReservation/', views.make_reservation, name='makeReservation'),
+
+
+    # Misc urls
     path('redirect/', views.redirection_page, name='redirect'),
     path('database_upload', views.database_upload, name='database_upload'),
 ]
