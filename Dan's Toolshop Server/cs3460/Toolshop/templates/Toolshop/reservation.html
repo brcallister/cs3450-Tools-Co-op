@@ -43,7 +43,7 @@
     <!-- content body -->
     <!-- main content -->
     <div id="homepage">
-      <form action="{% url 'Toolshop:reserve'%}param=query" method="post">
+      <form action="{% url 'Toolshop:reserve'%}subset" method="post">
             {% csrf_token %}
             <input type="text" name="query" value="" size="32">
             <input type="submit" value="Search our tools..." />
