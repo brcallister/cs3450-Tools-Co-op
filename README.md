@@ -11,15 +11,15 @@ We will be using Git version control to help maintain the documentation of the p
 
 ## Tool stack description and setup procedure:
 
-The tools we will be using for this project is C#, JavaScript, HTML, CSS, SQL, and potentially AWS. The front-end will be comprised of JavaScript, HTML, and CSS. C# will be the main language for our back-end components. SQL will create and manage our database. Our database will be comprised of several tables representing tools, customers, and employees.  We will have a server application that while running, allows users to connect to and interact with our website.  Through user input (which is throughly checked and certifiably secure), the database will be updated and maintained automatically.
+The tools we will be using for this project is JavaScript, HTML, CSS, and **the Python framwork Django**. The front-end will be comprised of JavaScript, HTML, and CSS. **Python will be the main language for our back-end components. Django will create and manage our database.** Our database will be comprised of several tables representing **tools and customers.  We will have a server application that while running, allows users to connect to and interact with our website.  Through user input (which is throughly checked and certifiably secure), the database will be updated and maintained automatically.
 
-## Build instructions:
+## Startup Instructions:
 
-The build instructions for this project are difficult to pin down because we're still in the earlier stages of development. We don't have large amounts of code that needs to be run. We'll update the README as more and more things are implemented.
+**Startup instructions are included as a markdown (.md) file in the docs section.  Please see that file to learn about installing, running, and using the web server.**
 
 ## Unit testing instructions:
 
-As far as unit testing goes our plan is to have the author of the original code debug it as much as he/she can. Once satisfied, the author will request a review from a different member of the group. This peer reviewer will try his best to find more bugs for the author to sort out. The process can be repeated as many times as necessary.
+As far as unit testing goes our plan is to have the author of the original code debug it as much as he/she can. Once satisfied, the author will request a review from a different member of the group. This peer reviewer will try his best to find more bugs for the author to sort out. The process can be repeated as many times as necessary. **See the startup instructions for help with running our unit tests**.
 
 ## System testing instructions:
 
@@ -32,7 +32,3 @@ We are using ClickUp as our configuration management software.  We use it to cre
 ## Scrum Board History:
 
 Our scrum history is recorded on ClickUp.  As part of our scrum procedures, we recorded time estimates for each task, who was assigned to each task, as well as when the task was eventually completed.  All of this was done under the supervision of Josh, our scrum master.
-
-## Startup Instructions:
-
-Startup instructions are included as a markdown (.md) file in the docs section.  Please see that file to learn about installing, running, and using the web server.
