@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>Dan's Tool Rentals</title>
+<meta charset="UTF-8">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'Toolshop/layout.css' %}">
+  <link rel="shortcut icon" type="image/png" href="{% static 'Toolshop/favicon.ico' %}"/>
+</head>
+<body>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="{% url 'Toolshop:index' %}">Dan's Tool Shop
+      <img src="{% static 'Toolshop/logo.jpg' %}" style="width:15%"></a></h1>
+    </div>
+      <form action="#" method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+      <fieldset>
+        <div style="padding-right: 0px">
+          <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:account' %}">Account</a> </button>
+        </div>
+        <div style="padding-right: 110px">
+          <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:reserve' %}">Reserve a Tool</a> </button>
+        </div>
+      </fieldset>
+      </fieldset>
+    </form>
+
+    <nav>
+      <ul>
+        <li><a href="{% url 'Toolshop:index' %}">Home</a></li>
+        <li><a href="{% url 'Toolshop:tools' %}">Our Tools</a></li>
+        <li><a href="{% url 'Toolshop:projects' %}">Our Projects</a></li>
+        <li><a href="{% url 'Toolshop:contact' %}">Contact Us!</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<div class="wrapper row2">
+  <div id="container" class="clear">
+    <div class="container" style="border:1px solid #ccc">
+        <form action="redirect.html">
+          <div class="container">
+
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname">
+            <br>
+            <br>
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname">
+            <br>
+            <br>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="emailAddress">
+            <br>
+            <br>
+            
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject">
+            <br>
+            <br>
+
+            <textarea id="textBody" name="textBody" placeholder="Ask us questions and we'll get back to you!" style="height:200px"></textarea>
+            <br>
+            <br>
+            
+            <input type="submit" value="Submit">
+          </div>
+        </form>
+        <div id="googleMap" style="width:100%;height:400px;">
+        </div>
+        <script>
+            function myMap() {
+                var mapProp= {
+                  center:new google.maps.LatLng(51.508742,-0.120850),
+                  zoom:5,
+                };
+                var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsc7DlveTKCwakCItrarBNKLAsu3VORUQ&callback=myMap"></script>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Footer -->
+<div class="wrapper row3">
+  <footer id="footer" class="clear">
+    <p class="fl_left">Copyright &copy; 2020 - All Rights Reserved - <a href="#">DansToolShop.com<br><img src="{% static 'Toolshop/logo.jpg' %}" style="width:15%"> </a></p>
+    <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+  </footer>
+</div>
+</body>
+<script src="script.js"></script>
+</html>

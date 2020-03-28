@@ -4,19 +4,39 @@ from django.contrib.auth.decorators import permission_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Tool
 
-#from .models import TOOLS CLASSES
+from .models import Tool, CustomerInfo
 
 
 def index(request):  # Main page
-    context = {
-
-    }
+    context = {}
     return render(request, 'Toolshop/index.html', context)
 
 
+def projects_page(request):
+    context = {}
+    return render(request, 'Toolshop/projects.html', context)
+
+
+def tools_page(request):
+    context = {}
+    return render(request, 'Toolshop/tools.html', context)
+
+
+def contact_page(request):
+    context = {}
+    return render(request, 'Toolshop/contact.html', context)
+
+
+def login_page(request):
+    context = {}
+    return render(request, 'Toolshop/login.html', context)
+
+
+@login_required
 def account_page(request):
     context = {
 
@@ -24,32 +44,37 @@ def account_page(request):
     return render(request, 'Toolshop/account.html', context)
 
 
-def hammers_page(request):
+@login_required
+def reservation_page(request):
+    tools_list = Tool.objects.order_by('category')
+    context = {
+        'tools_list': tools_list
+    }
+    return render(request, 'Toolshop/reservation.html', context)
+
+
+@login_required
+def reservation_page_specific(request, contains):  # This page has the results trimmed down by a search query
+    if request.POST.get('query') is not None:
+        contains = request.POST.get('query')
+    tools_list = Tool.objects.filter(name__contains=contains).order_by('category')
+    context = {
+        'tools_list': tools_list
+    }
+    return render(request, 'Toolshop/reservation.html', context)
+
+
+def make_reservation(request):
+    context = {
+    }
+    return render(request, 'Toolshop/reservation.html', context)
+
+
+def redirection_page(request):
     context = {
 
     }
-    return render(request, 'Toolshop/hammers.html', context)
-
-
-def wrenches_page(request):
-    context = {
-
-    }
-    return render(request, 'Toolshop/wrenches.html', context)
-
-
-def drills_page(request):
-    context = {
-
-    }
-    return render(request, 'Toolshop/drills.html', context)
-
-
-def oh_my_page(request):
-    context = {
-
-    }
-    return render(request, 'Toolshop/ohMy.html', context)
+    return render(request, 'Toolshop/redirect.html', context)
 
 
 @permission_required('admin.can_add_log_entry')
@@ -67,12 +92,16 @@ def database_upload(request):
     io_string = io.StringIO(data_set)
     next(io_string)
     for column in csv.reader(io_string, delimiter=','):
-        _, created = Tool.objects.update_or_create(
-            category=column[0],
-            name=column[1],
-            cost=column[2],
-            times_checked_out=0
-        )
+        print(int(column[3]))
+        for i in range(int(column[3])):
+            print("creating " + column[1])
+            created = Tool(
+                category=column[0],
+                name=column[1],
+                cost=column[2],
+                times_checked_out=0
+            )
+            created.save()
     context = {
 
     }

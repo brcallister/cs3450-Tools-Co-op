@@ -11,37 +11,29 @@
 <div class="wrapper row1">
   <header id="header" class="clear">
     <div id="hgroup">
-      <h1><a href="{% url 'Toolshop:index' %}">Dan's Tool Rentals</a></h1>
-      <br>
-      <h2>(Address for Dan's Tool Rentals can go here)</h2>
+      <h1><a href="{% url 'Toolshop:index' %}">Dan's Tool Shop
+      <img src="{% static 'Toolshop/logo.jpg' %}" style="width:15%"></a></h1>
     </div>
-    <form action="#" method="post">
+      <form action="#" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
       <fieldset>
         <div style="padding-right: 0px">
-          <button class="menuButtons" style="height: 23.4px" "font:bold;"> <a href="account.html">Account</a> </button>
+          <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:account' %}">Account</a> </button>
         </div>
         <div style="padding-right: 110px">
-          <button class="menuButtons" style="height: 23.4px" "font:bold;"> My Tools </button>
-        </div>
-        <div style="padding-right: 220px">
-            <button class="menuButtons" style="height: 23.4px" "font:bold;"> Misc. </button>
+          <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:reserve' %}">Reserve a Tool</a> </button>
         </div>
       </fieldset>
-      </fieldset>
-      <p>  </p>
-      <fieldset>
-        <legend>Search:</legend>
-        <input type="text" value="Search Our Website&hellip;" onFocus="this.value=(this.value=='Search Our Website&hellip;')? '' : this.value ;">
-        <input type="submit" id="sf_submit" value="submit">
       </fieldset>
     </form>
+
     <nav>
       <ul>
-        <li><a href="hammers.html">Hammers!</a></li>
-        <li><a href="wrenches.html">Wrenches!</a></li>
-        <li><a href="drills.html">Drills!</a></li>
-        <li><a href="ohMy.html">Oh my!</a></li>
-        <li class="last"><a href="#">We can keep adding more and more here....</a></li>
+        <li><a href="{% url 'Toolshop:index' %}">Home</a></li>
+        <li><a href="{% url 'Toolshop:tools' %}">Our Tools</a></li>
+        <li><a href="{% url 'Toolshop:projects' %}">Our Projects</a></li>
+        <li><a href="{% url 'Toolshop:contact' %}">Contact Us!</a></li>
       </ul>
     </nav>
   </header>
@@ -50,55 +42,69 @@
 <div class="wrapper row2">
   <div id="container" class="clear">
     <!-- content body -->
-    <section id="slider"><a href="#"><img src="{% static 'Toolshop/960x280.gif' %}" alt=""></a></section>
+    <!-- THIS IS WHERE THE SLIDESHOW HTML STARTS -->
+        <!-- Slideshow container -->
+    <div class="slideshow-container">   
+
+      <!-- Full-width images with number and caption text -->
+      <div class="mySlides fade">
+        <img src="{% static 'Toolshop/menu1.jpg' %}" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="{% static 'Toolshop/menu2.jpg' %}" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="{% static 'Toolshop/menu3.jpg' %}" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="{% static 'Toolshop/menu4.jpg' %}" style="width:100%">
+      </div>
+
+    <!-- THIS IS WHERE THE SLIDESHOW HTML ENDS -->
     <!-- main content -->
+    <br>
+    <br>
     <div id="homepage">
-      <!-- services area -->
-      <section id="services" class="clear">
+      <!-- One Quarter -->
+      <section id="latest" class="last clear">
         <article class="one_quarter">
-          <figure><img src="{% static 'Toolshop/32x32.gif' %}" width="32" height="32" alt=""></figure>
-          <strong>Lorum ipsum dolor</strong>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non diam erat. In fringilla massa ut nisi ullamcorper.</p>
-          <p class="more"><a href="#">Read More &raquo;</a></p>
+          <figure><img src="{% static 'Toolshop/project1.jpg' %}" width="215" height="100" alt="">
+            <figcaption>
+              <h2>Home Renevation</h2>
+              <p> Learn how our customers have been using our tools to make home renevation projects without the hassel and headaches.
+              <footer class="more"><a href="{% url 'Toolshop:projects' %}#project1">Read More &raquo;</a></footer>
+            </figcaption>
+          </figure>
         </article>
         <article class="one_quarter">
-          <figure><img src="{% static 'Toolshop/32x32.gif' %}" width="32" height="32" alt=""></figure>
-          <strong>Lorum ipsum dolor</strong>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non diam erat. In fringilla massa ut nisi ullamcorper.</p>
-          <p class="more"><a href="#">Read More &raquo;</a></p>
+          <figure><img src="{% static 'Toolshop/project2.jpg' %}" width="215" height="100" alt="">
+            <figcaption>
+              <h2>Larger Living Rooms</h2>
+              <p> Read all about how our customers are using our tools to make their living rooms larger, more comfortable, and modern. </p>
+              <footer class="more"><a href="{% url 'Toolshop:projects' %}#project2">Read More &raquo;</a></footer>
+            </figcaption>
+          </figure>
         </article>
         <article class="one_quarter">
-          <figure><img src="{% static 'Toolshop/32x32.gif' %}" width="32" height="32" alt=""></figure>
-          <strong>Lorum ipsum dolor</strong>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non diam erat. In fringilla massa ut nisi ullamcorper.</p>
-          <p class="more"><a href="#">Read More &raquo;</a></p>
+          <figure><img src="{% static 'Toolshop/project3.jpg' %}" width="215" height="100" alt="">
+            <figcaption>
+              <h2>Refurnishing Made Simple</h2>
+              <p> Learn how Matt and Molly made the daunting task of refurnishing their fireplace a peice of cake with our tools.</p>
+              <footer class="more"><a href="{% url 'Toolshop:projects' %}#project3">Read More &raquo;</a></footer>
+            </figcaption>
+          </figure>
         </article>
         <article class="one_quarter lastbox">
-          <figure><img src="{% static 'Toolshop/32x32.gif' %}" width="32" height="32" alt=""></figure>
-          <strong>Lorum ipsum dolor</strong>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non diam erat. In fringilla massa ut nisi ullamcorper.</p>
-          <p class="more"><a href="#">Read More &raquo;</a></p>
+          <figure><img src="{% static 'Toolshop/project4.jpg' %}" width="215" height="100" alt="">
+            <figcaption>
+              <h2>Make Your Kitchen Modern </h2>
+              <p> Learn how this newlywed couple was able to completely renovate their rundown apartment's kitchen into a modern masterpiece with our help.</p>
+              <footer class="more"><a href="{% url 'Toolshop:projects' %}#project4">Read More &raquo;</a></footer>
+            </figcaption>
+          </figure>
         </article>
       </section>
-      <!-- / services area -->
-      <!-- ########################################################################################## -->
-      <!-- ########################################################################################## -->
-      <!-- ########################################################################################## -->
-      <!-- ########################################################################################## -->
-      <section class="last clear">
-        <article class="three_quarter">
-          <h2>Important Info I guess</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non diam erat. In fringilla massa ut nisi ullamcorper pellentesque. Quisque non luctus sem. Nunc non diam erat. In fringilla massa ut nisi ullamcorper pellentesque. Quisque non luctus sem.</a>. Lorem ipsum</a>.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non diam erat. In fringilla massa ut nisi ullamcorper pellentesque. Quisque non luctus sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non diam erat. In fringilla massa ut nisi ullamcorper pellentesque. Quisque non luctus sem..</a>.</p>
-          <footer class="more"><a href="#">Read More &raquo;</a></footer>
-        </article>
-        <article class="one_quarter lastbox">
-          <h2>Lorum ipsum dolor</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non diam erat. In fringilla massa ut nisi ullamcorper pellentesque. Quisque non luctus sem.</p>
-          <footer class="more"><a href="#">Read More &raquo;</a></footer>
-        </article>
-      </section>
-      <!-- / Two Third -->
+      <!-- / One Quarter -->
     </div>
     <!-- / content body -->
   </div>
@@ -106,9 +112,10 @@
 <!-- Footer -->
 <div class="wrapper row3">
   <footer id="footer" class="clear">
-    <p class="fl_left">Copyright &copy; 2020 - All Rights Reserved - <a href="#">DansToolRentals.com</a></p>
+    <p class="fl_left">Copyright &copy; 2020 - All Rights Reserved - <a href="#"> DansToolShop.com <br><img src="{% static 'Toolshop/logo.jpg' %}" style="width:15%"> </a></p>
     <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
   </footer>
 </div>
 </body>
+<script src="{% static 'Toolshop/script.js' %}"></script>
 </html>

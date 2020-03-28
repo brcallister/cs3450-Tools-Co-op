@@ -8,6 +8,7 @@
 {{order}}
 <form method='post' enctype= "multipart/form-data">
 	{% csrf_token %}
+	{{ form.as_p }}
 	<label>Upload a file</label>
 	<input type='file' name='file'>
 	<p> Only accepts CSV files</p>
