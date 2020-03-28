@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Tool
 
-from .models import Tool, CustomerInfo
+from .models import Tool, CustomerInfo, Message
 
 
 def index(request):  # Main page
@@ -68,6 +68,37 @@ def make_reservation(request):
     context = {
     }
     return render(request, 'Toolshop/reservation.html', context)
+
+
+def submit_message(request):
+    first_name = request.POST.get('firstname')
+    last_name = request.POST.get('lastname')
+    email_address = request.POST.get('emailAddress')
+    subject = request.POST.get('subject')
+    message = request.POST.get('textBody')
+
+    if first_name is None or last_name is None or email_address is None or subject is None or message is None:
+        return HttpResponseRedirect(reverse('Toolshop:error'))
+    elif first_name == "" or last_name == "" or email_address == "" or subject == "" or message == "":
+        return HttpResponseRedirect(reverse('Toolshop:error'))
+    elif len(first_name) > 30 or len(last_name) > 30 or len(email_address) > 50:
+        return HttpResponseRedirect(reverse('Toolshop:error'))
+    elif len(subject) > 100 or len(message) > 1000:
+        return HttpResponseRedirect(reverse('Toolshop:error'))
+
+    new_message = Message(first_name=first_name, last_name=last_name,
+                          email=email_address, subject=subject,
+                          message=message)
+    new_message.save()
+    # Always return an HttpResponseRedirect after successfully dealing
+    # with POST data. This prevents data from being posted twice if a
+    # user hits the Back button.
+    return HttpResponseRedirect(reverse('Toolshop:redirect'))
+
+
+def submission_error(request):
+    context = {}
+    return render(request, 'Toolshop/submission_error.html', context)
 
 
 def redirection_page(request):

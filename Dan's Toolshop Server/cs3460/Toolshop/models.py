@@ -28,3 +28,14 @@ class CustomerInfo(models.Model):
     date_paid_until = models.DateTimeField(blank=True, null=True)
     num_currently_checked_out = models.PositiveIntegerField(default=0)
     current_outstanding_balance = models.PositiveIntegerField(blank=True, default=0)
+
+
+class Message(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    email = models.CharField(max_length=50)
+    subject = models.CharField(max_length=100)
+    message = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return self.subject
