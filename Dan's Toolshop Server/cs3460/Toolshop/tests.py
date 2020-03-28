@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.urls import reverse
 from datetime import timedelta
 
+
 # Create your tests here.
 
 
@@ -92,7 +93,8 @@ class ToolShopTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_account_view(self):
-        t = Tool(name="name", category="category", cost=5, times_checked_out=0, who_checked_out="test", date_checked_out=timezone.now())
+        t = Tool(name="name", category="category", cost=5, times_checked_out=0, who_checked_out="test",
+                 date_checked_out=timezone.now())
         t.save()
         url = reverse('Toolshop:account')
         response = self.client.get(url)
@@ -124,11 +126,38 @@ class ToolShopTest(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], reverse('Toolshop:error'))
 
+    def test_submit_message_with_data(self):
+        url = reverse('Toolshop:submitMessage')
+        response = self.client.post(url, {'firstname': 'test', 'lastname': 'testLast',
+                                                 'emailAddress': 'test@test.com',
+                                                 'subject': 'Test', 'textBody': 'This is a test'})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['location'], reverse('Toolshop:redirect'))
+
     def test_update_user_no_data(self):
         url = reverse('Toolshop:update')
         response = self.client.post(url, {})
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], reverse('Toolshop:updateError'))
 
+    def test_update_user_with_data(self):
+        url = reverse('Toolshop:update')
+        self.user = User.objects.create_user("test", "test@test.com", "testpassword")
+        self.client.login(username="test", password="testpassword")
+        response = self.client.post(url, {'firstName': 'test', 'lastName': 'testLast',
+                                                 'address': '1234 N 344 E',
+                                                 'email': 'test@test.com',
+                                                 'psw': 'password', 'psw-repeat': 'password'})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['location'], reverse('Toolshop:redirect'))
 
-
+    def test_update_user_wrong_data(self):
+        url = reverse('Toolshop:update')
+        self.user = User.objects.create_user("test", "test@test.com", "testpassword")
+        self.client.login(username="test", password="testpassword")
+        response = self.client.post(url, {'firstName': 'test', 'lastName': 'testLast',
+                                                 'address': '1234 N 344 E',
+                                                 'email': 'test@test.com',
+                                                 'psw': 'password', 'psw-repeat': 'word'})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['location'], reverse('Toolshop:updateError'))
