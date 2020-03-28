@@ -13,7 +13,7 @@ Next, we can install Django through the command prompt.  Simply use the followin
 
 `pip install django`
 
-Finally, clone this repo to the computer on which the server will be run, and you will be ready to go.
+Finally, clone this repository to the computer on which the server will be run, and you will be ready to go.
 
 ## Running the server
 
