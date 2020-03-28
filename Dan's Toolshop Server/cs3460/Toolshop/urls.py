@@ -17,10 +17,12 @@ urlpatterns = [
     path('projects/', views.projects_page, name='projects'),
     path('contact/', views.contact_page, name='contact'),
     path('error/', views.submission_error, name='error'),
+    path('updateError/', views.update_error, name='updateError'),
 
     # Actions
     path('makeReservation/', views.make_reservation, name='makeReservation'),
     path('submitMessage/', views.submit_message, name='submitMessage'),
+    path('updateUserInfo/', views.update_user_info, name='update'),
 
 
     # Misc urls
