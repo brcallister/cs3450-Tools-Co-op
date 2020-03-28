@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .models import Tool, CustomerInfo, Message
 from django.contrib.auth.models import User
+from django.utils import timezone
 from django.urls import reverse
 
 # Create your tests here.
@@ -101,5 +102,33 @@ class ToolShopTest(TestCase):
         self.assertContains(response, t)
         self.assertContains(response, self.user)
         self.assertEqual(response.status_code, 200)
+
+    def test_make_reservation(self):
+        t = self.create_tool()
+        t.save()
+        self.user = User.objects.create_user("test", "test@test.com", "testpassword")
+        c = CustomerInfo(user=self.user)
+        c.save()
+        self.client.login(username="test", password="testpassword")
+        url = reverse('Toolshop:makeReservation', kwargs={'id': t.id})
+        response = self.client.get(url, args=[t.id])
+        t = Tool.objects.filter(id=t.id)
+        self.assertEqual(t[0].who_checked_out, self.user.username)
+        self.assertTrue(t[0].is_checked_out)
+        self.assertEqual(response.status_code, 200)
+
+
+    def test_submit_message(self):
+        url = reverse('Toolshop:submitMessage')
+        response = self.client.post(url, {})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['location'], reverse('Toolshop:error'))
+
+    def test_update_user(self):
+        url = reverse('Toolshop:update')
+        response = self.client.post(url, {})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['location'], reverse('Toolshop:updateError'))
+
 
 
