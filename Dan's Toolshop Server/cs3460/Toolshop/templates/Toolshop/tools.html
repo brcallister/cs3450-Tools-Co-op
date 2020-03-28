@@ -6,7 +6,6 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'Toolshop/layout.css' %}">
   <link rel="shortcut icon" type="image/png" href="{% static 'Toolshop/favicon.ico' %}"/>
-
 </head>
 <body>
 <div class="wrapper row1">
@@ -26,7 +25,6 @@
           <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:reserve' %}">Reserve a Tool</a> </button>
         </div>
       </fieldset>
-      </fieldset>
     </form>
 
     <nav>
@@ -45,47 +43,23 @@
     <section id="gallery" class="clear">
       <figure>
         <header>Our Wonderful Selection of Tools!</header>
-        <ul>
-          <li><a onclick="displayTools(bike_tools)">Bike Tools</a></li>
-          <li><a onclick="displayTools(bike_tools)">Carpentry & Woodworking</a></li>
-          <li><a onclick="displayTools(bike_tools)">Carpet</a></li>
-          <li><a onclick="displayTools(bike_tools)">Cement</a></li>
-          <li><a onclick="displayTools(bike_tools)">Drywall & Masonry</a></li>
-          <li><a onclick="displayTools(bike_tools)">Electrical & Mechanical</a></li>
-          <li><a onclick="displayTools(bike_tools)">Garden</a></li>
-          <li><a onclick="displayTools(bike_tools)">Power</a></li>
-          <li><a onclick="displayTools(bike_tools)">Kitchen</a></li>
-          <li><a onclick="displayTools(bike_tools)">Other</a></li>
-
-        </ul>
-
-        <div id="EDIT_ME_IN_THE_JAVASCRIPT">
-
-        </div>
-
-        <ul>
-          <!-- TODO: Rewrite in javascript -->
-          <!-- <li><a href="#"><img src="images/drill1.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/drill2.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/drill1.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/drill2.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/drill3.jpg" alt=""></a></li>
-          <li class="last"><a href="#"><img src="images/drill3.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/drill2.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/drill1.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/drill3.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/drill1.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/drill2.jpg" alt=""></a></li>
-          <li class="last"><a href="#"><img src="images/drill2.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/drill1.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/drill3.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/drill2.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/drill1.jpg" alt=""></a></li>
-          <li><a href="#"><img src="images/drill3.jpg" alt=""></a></li>
-          <li class="last"><a href="#"><img src="images/drill2.jpg" alt=""></a></li> -->
-        </ul>
-        <figcaption>Description for the tools</figcaption>
+          <button onclick="displayBike()"> Bike Tools </button>
+          <button onclick="displayCarpentry()"> Carpentry & Woodworking </button>
+          <button onclick="displayCarpet()"> Carpet </button>
+          <button onclick="displayCement()"> Cement </button>
+          <button onclick="displayDrywall()"> Drywall & Masonry </button>
+          <button onclick="displayElectrical()"> Electrical & Mechanical </button>
+          <button onclick="displayGarden()"> Garden </button>
+          <button onclick="displayPower()"> Power </button>
+          <button onclick="displayKitchen()"> Kitchen </button>
+          <button onclick="displayOther()"> Other </button>
       </figure>
+    <div id="tool_info_section">
+
+    </div>
+
+
+
     </section>
 
   </div>
@@ -98,5 +72,5 @@
   </footer>
 </div>
 </body>
-<script src="script.js"></script>
+  <script src="{% static 'Toolshop/script.js' %}"></script>
 </html>

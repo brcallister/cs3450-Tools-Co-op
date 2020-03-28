@@ -287,3 +287,14 @@ Licence: <a href="https://www.os-templates.com/template-terms">Website Template 
 #gallery li.last{margin-right:0;}
 #gallery li a img{display:block; width:130px; height:130px; border:10px solid #B7B7B7;}
 #gallery li a:hover img{border-color:#FF9900;}
+
+
+#tool_info_section{display:block; width:100%; line-height:1.6em;}
+#tool_info_section figure{}
+#tool_info_section figure header{margin:0 0 15px 0; padding:0; font-size:20px; line-height:normal;}
+#tool_info_section figure figcaption{display:block; width:100%; margin:0; padding:0; clear:both;}
+#tool_info_section ul, #tool_info_section img{margin:0; padding:0; list-style:none;}
+#tool_info_section li{display:block; float:left; width:150px; margin:0 12px 12px 0; padding:0;}
+#tool_info_section li.last{margin-right:0;}
+#tool_info_section li a img{display:block; width:130px; height:130px; border:10px solid #B7B7B7;}
+#tool_info_section li a:hover img{border-color:#FF9900;}
