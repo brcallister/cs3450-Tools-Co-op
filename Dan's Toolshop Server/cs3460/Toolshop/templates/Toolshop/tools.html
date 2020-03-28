@@ -54,6 +54,12 @@
           <button onclick="displayKitchen()"> Kitchen </button>
           <button onclick="displayOther()"> Other </button>
       </figure>
+      <script>
+        var toolsList = [];
+        '{% for tool in tools_list %}'
+        toolsList.push('{{ tool | escapejs }}')
+        ',{% endfor %}'
+      </script>
     <div id="tool_info_section">
 
     </div>
@@ -72,5 +78,5 @@
   </footer>
 </div>
 </body>
-  <script src="{% static 'Toolshop/script.js' %}"></script>
+  <script src="{% static 'Toolshop/tools.js' %}"></script>
 </html>
