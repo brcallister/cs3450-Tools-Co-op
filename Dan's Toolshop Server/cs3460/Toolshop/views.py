@@ -38,8 +38,11 @@ def login_page(request):
 
 @login_required
 def account_page(request):
+    user = request.user
+    tools_list = Tool.objects.filter(who_checked_out__contains=user.username)
     context = {
-
+        'user': user,
+        'tools_list': tools_list
     }
     return render(request, 'Toolshop/account.html', context)
 
@@ -78,6 +81,39 @@ def make_reservation(request, id):
     return render(request, 'Toolshop/redirect.html', context)
 
 
+def update_user_info(request):
+    user = request.user
+    first_name = request.POST.get('firstName')
+    last_name = request.POST.get('lastName')
+    address = request.POST.get('address')
+    email_address = request.POST.get('email')
+    password_1 = request.POST.get('psw')
+    password_2 = request.POST.get('psw-repeat')
+
+    if password_1 != password_2:
+        return HttpResponseRedirect(reverse('Toolshop:updateError'))
+    elif first_name is None or last_name is None or address is None or email_address is None or password_1 is None:
+        return HttpResponseRedirect(reverse('Toolshop:updateError'))
+    elif first_name == "" or last_name == "" or address == "" or email_address == "" or password_1 == "":
+        return HttpResponseRedirect(reverse('Toolshop:updateError'))
+    elif len(first_name) > 30 or len(last_name) > 30 or len(email_address) > 50:
+        return HttpResponseRedirect(reverse('Toolshop:updateError'))
+    elif len(password_1) < 8 or len(password_1) > 30:
+        return HttpResponseRedirect(reverse('Toolshop:updateError'))
+
+    user.first_name = first_name
+    user.last_name = last_name
+    user.email = email_address
+    user.address = address
+    user.set_password(password_1)
+
+    user.save()
+    # Always return an HttpResponseRedirect after successfully dealing
+    # with POST data. This prevents data from being posted twice if a
+    # user hits the Back button.
+    return HttpResponseRedirect(reverse('Toolshop:redirect'))
+
+
 def submit_message(request):
     first_name = request.POST.get('firstname')
     last_name = request.POST.get('lastname')
@@ -107,6 +143,11 @@ def submit_message(request):
 def submission_error(request):
     context = {}
     return render(request, 'Toolshop/submission_error.html', context)
+
+
+def update_error(request):
+    context = {}
+    return render(request, 'Toolshop/update_error.html', context)
 
 
 def redirection_page(request):

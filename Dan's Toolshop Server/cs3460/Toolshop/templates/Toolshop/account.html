@@ -43,12 +43,29 @@
     <div class="container" style="border:1px solid #ccc">
       <div class="container">
         <h1>Account Information</h1>
-        <p>Tools Currently Checked Out: <a href="toolCheckedOut"> list of tools here </a></p>
-        <p>Tools Due Date: <a href="toolCheckedOut"> tool due dates here </a></p>
-        <p>Outstanding Balance: <a href="balance"> balance here </a></p>
+        <p> Username: {{user.username}}</p>
+        {% if tools_list %}
+          <table cellspacing="10">
+            <tr>
+              <th>Currently Checked Out:</th>
+              <th>Return By:</th>
+            </tr>
+              {% for tool in tools_list %}
+            <tr>
+              <td>{{tool.name}}</td>
+              <td>{{tool.date_checked_out}}</td>
+            </tr>
+              {% endfor %}
+          </table>
+		{% else %}
+    		<p>No tools currently checked out.</p>
+		{% endif %}
+        <p>Outstanding Balance: ${{user.customerinfo.current_outstanding_balance}}</p>
       </div>
       <hr>
-      <form action="action_page.php">
+      <form action="{% url 'Toolshop:update'%}" method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
         <div class="container">
           <h1>Update Account Information</h1>
           <br>

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
 <title>Dan's Tool Rentals</title>
@@ -14,6 +15,8 @@
       <img src="{% static 'Toolshop/logo.jpg' %}" style="width:15%"></a></h1>
     </div>
       <form action="#" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
       <fieldset>
         <div style="padding-right: 0px">
           <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:account' %}">Account</a> </button>
@@ -21,7 +24,6 @@
         <div style="padding-right: 110px">
           <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:reserve' %}">Reserve a Tool</a> </button>
         </div>
-      </fieldset>
       </fieldset>
     </form>
 
@@ -38,24 +40,15 @@
 <!-- content -->
 <div class="wrapper row2">
   <div id="container" class="clear">
-    <div class="container" style="border:1px solid #ccc">
-        <!-- content body -->
-        <!-- main content -->
-        <div style="text-align:center"><h2>User Login</h2></div>
-        <hr>
-        <br>
-        <div style="text-align:center">
-          <form method="post" id="form_login">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Login</button>
-          </form>
-        </div>
-        <div id="homepage">
+    <!-- content body -->
+    <!-- main content -->
+    Your information could not be updated.  Please check that no fields are blank/overfilled, and that both password fields match.
+    Please try again.
 
-        </div>
-        <!-- / content body -->
+    <div id="homepage">
+
     </div>
+    <!-- / content body -->
   </div>
 </div>
 <!-- Footer -->
@@ -66,5 +59,5 @@
   </footer>
 </div>
 </body>
-<script src="script.js"></script>
+  <script src="{% static 'Toolshop/script.js' %}"></script>
 </html>
