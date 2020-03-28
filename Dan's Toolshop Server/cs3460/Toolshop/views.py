@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 import datetime
+from datetime import timedelta
 
 from .models import Tool, CustomerInfo, Message
 
@@ -40,6 +41,10 @@ def login_page(request):
 def account_page(request):
     user = request.user
     tools_list = Tool.objects.filter(who_checked_out__contains=user.username)
+    for tool in tools_list:
+        # Temporarily change the variable to represent the day the tool is due.
+        tool.date_checked_out = tool.date_checked_out + timedelta(days=7)
+        # Do NOT save the new data with Tool.save()
     context = {
         'user': user,
         'tools_list': tools_list
