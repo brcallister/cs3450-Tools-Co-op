@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 import datetime
+from datetime import timedelta
 
 from .models import Tool, CustomerInfo, Message
 
@@ -22,7 +23,10 @@ def projects_page(request):
 
 
 def tools_page(request):
-    context = {}
+    tools_list = Tool.objects.order_by('category')
+    context = {
+        'tools_list': tools_list
+    }
     return render(request, 'Toolshop/tools.html', context)
 
 
@@ -40,6 +44,10 @@ def login_page(request):
 def account_page(request):
     user = request.user
     tools_list = Tool.objects.filter(who_checked_out__contains=user.username)
+    for tool in tools_list:
+        # Temporarily change the variable to represent the day the tool is due.
+        tool.date_checked_out = tool.date_checked_out + timedelta(days=7)
+        # Do NOT save the new data with Tool.save()
     context = {
         'user': user,
         'tools_list': tools_list
@@ -66,7 +74,7 @@ def reservation_page_specific(request, contains):  # This page has the results t
     }
     return render(request, 'Toolshop/reservation.html', context)
 
-
+@login_required
 def make_reservation(request, id):
     tool = get_object_or_404(Tool, pk=id)
     tool.is_checked_out = True
@@ -186,41 +194,4 @@ def database_upload(request):
 
     }
     return render(request, template, context)
-
-
-
-'''
-
-def blog_home(request):
-    recent_blog_list = Blog.objects.order_by('-posted')[:3]
-    context = {
-        'recent_blog_list': recent_blog_list,
-    }
-    return render(request, 'blog/index.html', context)
-
-
-def blog_archive(request):
-    blog_list = Blog.objects.order_by('-posted')
-    context = {
-        'recent_blog_list': blog_list,
-    }
-    return render(request, 'blog/archive.html', context)
-
-
-def blog_entry(request, blog_id):
-    blog_obj = get_object_or_404(Blog, pk=blog_id)
-    comments_list = blog_obj.comments_set.all().order_by('-posted')
-
-    context = {
-        'blog': blog_obj,
-        'comments_list': comments_list,
-        'blog_id': blog_id,
-    }
-    return render(request, 'blog/entry.html', context)
-
-
-def about(request):
-    return render(request, 'blog/about.html', {'Server_Time': timezone.now()})
-
-'''
 

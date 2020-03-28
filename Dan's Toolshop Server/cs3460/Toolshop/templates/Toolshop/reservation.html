@@ -59,10 +59,7 @@
             <td>Not Currently Available</td>
             {% else %}
             <td>
-              <!-- <form action="{% url 'Toolshop:reserve'%}tool.id" method="post">
-                {% csrf_token %} -->
                 <a href="{% url 'Toolshop:makeReservation' tool.id %}">Available.  Click here to reserve.</a>
-              <!-- </form> -->
             </td>
             {% endif %}
           </tr>

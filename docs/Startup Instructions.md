@@ -31,6 +31,13 @@ for the main page, and
 
 for the admin page.
 
+## Password protected content
+
+Several pages on the website are locked by a login page, through which only a registered account can proceed.  An account has been set up for testing purposes while the website is still under development.
+
+Username: danwatson
+Password: test12345
+
 ## Running Unit Tests
 
 In order to run our server's unit tests, once again navigate to the folder that houses the file "manage.py", and run the following command in the command prompt:
