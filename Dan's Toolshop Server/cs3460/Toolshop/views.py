@@ -71,7 +71,7 @@ def make_reservation(request, id):
     tool = get_object_or_404(Tool, pk=id)
     tool.is_checked_out = True
     tool.times_checked_out += 1
-    tool.date_checked_out = datetime.datetime.now()
+    tool.date_checked_out = timezone.now()
     tool.who_checked_out = request.user.username
     current_user = get_object_or_404(CustomerInfo, user=request.user)
     current_user.num_currently_checked_out += 1
