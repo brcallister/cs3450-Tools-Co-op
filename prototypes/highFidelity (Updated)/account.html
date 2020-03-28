@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>Dan's Tool Rentals</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="styles/layout.css" type="text/css">
+</head>
+<body>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="index.html">Dan's Tool Shop <br>
+      <img src="images/logo.jpg" style="width:100%"></a></h1>
+      <br>
+    </div>
+      <form action="#" method="post">
+      <fieldset>
+        <div style="padding-right: 0px">
+          <button class="menuButtons" style="height: 23.4px" "font:bold;"> <a href="account.html">Account</a> </button>
+        </div>
+      </fieldset>
+      </fieldset>
+    </form>
+
+    <nav>
+      <ul>
+        <li><a href="search.html?term=bike">Bike Tools</a></li>
+        <li><a href="search.html?term=carpentry">Carpentry & Woodworking</a></li>
+        <li><a href="search.html?term=carpet">Carpet</a></li>
+        <li><a href="search.html?term=cement">Cement</a></li>
+        <li><a href="search.html?term=drywall">Drywall & Masonry</a></li>
+        <li><a href="search.html?term=electrical">Electrical & Mechanical</a></li>
+        <li><a href="search.html?term=garden">Garden</a></li>
+        <li><a href="search.html?term=power">Power</a></li>
+        <li><a href="search.html?term=kitchen">Kitchen</a></li>
+        <li><a href="search.html?term=other">Other</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<!-- content -->
+<div class="wrapper row2">
+  <div id="container">
+    <!-- content body -->
+
+<!-- Left sidebar -->
+  <div class="container" style="border:1px solid #ccc">
+
+    <div class="container">
+      <h1>Account Information</h1>
+
+      
+      <p>Tools Currently Checked Out: <a href="toolCheckedOut"> list of tools here </a></p>
+      <p>Tools Due Date: <a href="toolCheckedOut"> tool due dates here </a></p>
+      <p>Outstanding Balance: <a href="balance"> balance here </a></p>
+
+
+    </div>
+
+    <hr>
+    <form action="action_page.php">
+      <div class="container">
+        <h1>Update Account Information</h1>
+        <br>
+        <br>
+        <label for="firstName"><b>First Name</b></label>
+        <input type="text" placeholder="First Name" name="firstName" required>
+
+        <label for="lastName"><b>Last Name</b></label>
+        <input type="text" placeholder="Last Name" name="lastName" required>
+
+        <label for="address"><b>Address</b></label>
+        <input type="text" placeholder="Address" name="address" required>
+
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter Email" name="email" required>
+    
+        <label for="psw"><b>Change Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+        <br>
+        <br>
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+        <br>
+        <br>
+        <div class="clearfix">
+          <button type="button" class="cancelbtn">Cancel</button>
+          <button type="submit" class="signupbtn">Update</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+<!-- End Left sidebar -->
+<!-- Sidebar Ends -->
+    <!-- main content -->
+
+    <!-- / content body -->
+  </div>
+</div>
+<!-- Footer -->
+<div class="wrapper row3">
+  <footer id="footer" class="clear">
+    <p class="fl_left">Copyright &copy; 2020 - All Rights Reserved - <a href="#">DansToolShop.com<img src="images/logo.jpg" style="width:30%"> </a></p>
+    <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+  </footer>
+</div>
+</body>
+<script src="script.js"></script>
+</html>
