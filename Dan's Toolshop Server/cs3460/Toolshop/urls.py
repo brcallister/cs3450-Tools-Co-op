@@ -16,9 +16,11 @@ urlpatterns = [
     path('tools/', views.tools_page, name='tools'),
     path('projects/', views.projects_page, name='projects'),
     path('contact/', views.contact_page, name='contact'),
+    path('error/', views.submission_error, name='error'),
 
     # Actions
     path('makeReservation/', views.make_reservation, name='makeReservation'),
+    path('submitMessage/', views.submit_message, name='submitMessage'),
 
 
     # Misc urls

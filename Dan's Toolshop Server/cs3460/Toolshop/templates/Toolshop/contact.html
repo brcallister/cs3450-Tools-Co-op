@@ -55,7 +55,9 @@
       <br><br>
   </div>
     <div class="container" style="border:1px solid #ccc">
-        <form action="redirect.html">
+        <form action="{% url 'Toolshop:submitMessage'%}" method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
           <div class="container">
 
             <label for="fname">First Name</label>
@@ -91,13 +93,13 @@
         <script>
             function myMap() {
                 var mapProp= {
-                  center:new google.maps.LatLng(41.7452,-111.8097),
-                  zoom:13,
+                  center:new google.maps.LatLng(51.508742,-0.120850),
+                  zoom:5,
                 };
                 var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
             }
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=&callback=myMap"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsc7DlveTKCwakCItrarBNKLAsu3VORUQ&callback=myMap"></script>
     </div>
   </div>
 </div>

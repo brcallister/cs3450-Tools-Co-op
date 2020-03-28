@@ -6,6 +6,8 @@ from .models import CustomerInfo
 
 from .models import Tool
 
+from .models import Message
+
 
 class CustomerInline(admin.StackedInline):
     model = CustomerInfo
@@ -23,3 +25,5 @@ admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 
 admin.site.register(Tool)
+
+admin.site.register(Message)
