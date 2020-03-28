@@ -3,6 +3,7 @@ from .models import Tool, CustomerInfo, Message
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
+from datetime import timedelta
 
 # Create your tests here.
 
@@ -91,7 +92,7 @@ class ToolShopTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_account_view(self):
-        t = Tool(name="name", category="category", cost=5, times_checked_out=0, who_checked_out="test")
+        t = Tool(name="name", category="category", cost=5, times_checked_out=0, who_checked_out="test", date_checked_out=timezone.now())
         t.save()
         url = reverse('Toolshop:account')
         response = self.client.get(url)
@@ -117,14 +118,13 @@ class ToolShopTest(TestCase):
         self.assertTrue(t[0].is_checked_out)
         self.assertEqual(response.status_code, 200)
 
-
-    def test_submit_message(self):
+    def test_submit_message_no_data(self):
         url = reverse('Toolshop:submitMessage')
         response = self.client.post(url, {})
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], reverse('Toolshop:error'))
 
-    def test_update_user(self):
+    def test_update_user_no_data(self):
         url = reverse('Toolshop:update')
         response = self.client.post(url, {})
         self.assertEqual(response.status_code, 302)
