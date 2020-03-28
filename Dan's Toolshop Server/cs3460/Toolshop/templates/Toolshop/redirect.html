@@ -15,9 +15,6 @@
       <h1><a href="{% url 'Toolshop:index' %}">Dan's Tool Shop
       <img src="{% static 'Toolshop/logo.jpg' %}" style="width:15%"></a></h1>
     </div>
-      <form action="#" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
       <fieldset>
         <div style="padding-right: 0px">
           <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:account' %}">Account</a> </button>
@@ -26,7 +23,6 @@
           <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:reserve' %}">Reserve a Tool</a> </button>
         </div>
       </fieldset>
-    </form>
 
     <nav>
       <ul>
