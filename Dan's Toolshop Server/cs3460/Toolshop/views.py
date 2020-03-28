@@ -95,7 +95,7 @@ def update_user_info(request):
     user.first_name = first_name
     user.last_name = last_name
     user.email = email_address
-    user.CustomerInfo.address = address
+    user.address = address
     user.set_password(password_1)
 
     user.save()
