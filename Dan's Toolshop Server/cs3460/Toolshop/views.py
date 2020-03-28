@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
+import datetime
 
 from .models import Tool, CustomerInfo, Message
 
@@ -63,10 +64,18 @@ def reservation_page_specific(request, contains):  # This page has the results t
     return render(request, 'Toolshop/reservation.html', context)
 
 
-def make_reservation(request):
-    context = {
-    }
-    return render(request, 'Toolshop/reservation.html', context)
+def make_reservation(request, id):
+    tool = get_object_or_404(Tool, pk=id)
+    tool.is_checked_out = True
+    tool.times_checked_out += 1
+    tool.date_checked_out = datetime.datetime.now()
+    tool.who_checked_out = request.user.username
+    current_user = get_object_or_404(CustomerInfo, user=request.user)
+    current_user.num_currently_checked_out += 1
+    tool.save()
+    current_user.save()
+    context = {}
+    return render(request, 'Toolshop/redirect.html', context)
 
 
 def submit_message(request):

@@ -19,7 +19,7 @@ urlpatterns = [
     path('error/', views.submission_error, name='error'),
 
     # Actions
-    path('makeReservation/', views.make_reservation, name='makeReservation'),
+    path('makeReservation/<int:id>', views.make_reservation, name='makeReservation'),
     path('submitMessage/', views.submit_message, name='submitMessage'),
 
 
