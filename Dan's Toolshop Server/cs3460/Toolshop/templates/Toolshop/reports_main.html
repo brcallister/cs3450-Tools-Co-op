@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>Dan's Tool Rentals</title>
+<meta charset="UTF-8">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'Toolshop/layout.css' %}">
+  <link rel="shortcut icon" type="image/png" href="{% static 'Toolshop/favicon.ico' %}"/>
+</head>
+<body>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="{% url 'Toolshop:index' %}">Dan's Employee Portal
+      <img src="{% static 'Toolshop/logo.jpg' %}" style="width:15%"></a></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="{% url 'Toolshop:index' %}">Main Website</a></li>
+        <li><a href="{% url 'Toolshop:reports_users' %}">Users</a></li>
+        <li><a href="{% url 'Toolshop:reports_tools' sort_by='all' %}">Tools</a></li>
+        <li><a href="{% url 'Toolshop:reports_tools' sort_by='checked_out' %}">Tools (Checked out)</a></li>
+        <li><a href="{% url 'Toolshop:reports_tools' sort_by='popularity' %}">Tools (Popularity)</a></li>
+        <li><a href="{% url 'Toolshop:check_in' %}">Check Tools In</a></li>
+        <li><a href="{% url 'Toolshop:add_tool' %}">Add a tool</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<!-- content -->
+<div class="wrapper row2">
+  <div id="container" class="clear">
+    <!-- content body -->
+    <!-- main content -->
+
+    <div id="homepage">
+      Welcome to the employee portal.
+    </div>
+    <!-- / content body -->
+  </div>
+</div>
+<!-- Footer -->
+<div class="wrapper row3">
+  <footer id="footer" class="clear">
+    <p class="fl_left">Copyright &copy; 2020 - All Rights Reserved - <a href="#">DansToolShop.com<br><img src="{% static 'Toolshop/logo.jpg' %}" style="width:15%"> </a></p>
+    <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+  </footer>
+</div>
+</body>
+  <script src="{% static 'Toolshop/script.js' %}"></script>
+</html>

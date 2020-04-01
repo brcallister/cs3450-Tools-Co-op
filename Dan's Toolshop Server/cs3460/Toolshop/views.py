@@ -6,9 +6,10 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
+from django.urls import resolve
 import datetime
 from datetime import timedelta
-
+from django.contrib.auth.models import User
 from .models import Tool, CustomerInfo, Message
 
 
@@ -159,9 +160,7 @@ def update_error(request):
 
 
 def redirection_page(request):
-    context = {
-
-    }
+    context = {}
     return render(request, 'Toolshop/redirect.html', context)
 
 
@@ -194,4 +193,65 @@ def database_upload(request):
 
     }
     return render(request, template, context)
+
+
+'''
+THESE ARE THE EMPLOYEE VIEWS.
+THIS IS A DIFFERENT PART OF THE WEBSITE, ONLY ACCESSIBLE BY EMPLOYEES
+'''
+
+
+@permission_required('user.is_staff')
+def reports_main(request):
+    context = {}
+    return render(request, 'Toolshop/reports_main.html', context)
+
+
+@permission_required('user.is_staff')
+def reports_users(request):
+    users_list = User.objects.all()
+
+    context = {
+        'users_list': users_list,
+    }
+    return render(request, 'Toolshop/reports_users.html', context)
+
+
+@permission_required('user.is_staff')
+def reports_tools(request, sort_by):
+    if sort_by == "checked_out":
+        tools_list = Tool.objects.filter(is_checked_out=True)
+    elif sort_by == "popularity":
+        tools_list = Tool.objects.order_by("-times_checked_out")
+    else:
+        tools_list = Tool.objects.all()
+
+    context = {
+        'tools_list': tools_list,
+    }
+    return render(request, 'Toolshop/reports_tools.html', context)
+
+
+@permission_required('user.is_staff')
+def check_in_page(request):
+    context = {}
+    return render(request, 'Toolshop/reports_checkin.html', context)
+
+
+@permission_required('user.is_staff')
+def add_tool_page(request):
+    context = {}
+    return render(request, 'Toolshop/reports_addtool.html', context)
+
+
+@permission_required('user.is_staff')
+def check_in(request):
+    context = {}
+    return render(request, 'Toolshop/redirect.html', context)
+
+
+@permission_required('user.is_staff')
+def add_tool(request):
+    context = {}
+    return render(request, 'Toolshop/redirect.html', context)
 
