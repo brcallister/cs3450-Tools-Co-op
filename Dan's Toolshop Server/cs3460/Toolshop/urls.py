@@ -30,7 +30,7 @@ urlpatterns = [
     path('makeReservation/<int:id>', views.make_reservation, name='makeReservation'),
     path('submitMessage/', views.submit_message, name='submitMessage'),
     path('updateUserInfo/', views.update_user_info, name='update'),
-    path('check_in_tool/', views.check_in, name='check_in_tool'),
+    path('check_in_tool/<int:tool_id>', views.check_in, name='check_in_tool'),
     path('add_tool/', views.add_tool, name='add_tool'),
 
     # Misc urls

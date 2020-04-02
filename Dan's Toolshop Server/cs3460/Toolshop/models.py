@@ -2,6 +2,8 @@ import datetime
 
 from django.contrib.auth.models import User
 from django.db import models
+from datetime import timedelta
+from django.utils import timezone
 
 
 class Tool(models.Model):
@@ -17,6 +19,12 @@ class Tool(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_due_date(self):
+        return self.date_checked_out + timedelta(days=7)
+
+    def is_overdue(self):
+        return self.date_checked_out + timedelta(days=7) < timezone.now()
 
 
 class CustomerInfo(models.Model):

@@ -35,39 +35,38 @@
     <!-- main content -->
 
     <div id="homepage">
-      <form action="{% url 'Toolshop:check_in_tool'%}" method="post">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <div class="container">  # TODO UPDATE MEEEEEEEEEEE!!
-
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname">
-            <br>
-            <br>
-
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname">
-            <br>
-            <br>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="emailAddress">
-            <br>
-            <br>
-
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject">
-            <br>
-            <br>
-
-            <textarea id="textBody" name="textBody" placeholder="Ask us questions and we'll get back to you!" style="height:200px"></textarea>
-            <br>
-            <br>
-
-            <input type="submit" value="Submit">
-            <br><br>
-          </div>
-        </form>
+      {% if tools_list %}
+		<table cellspacing="20">
+          <tr>
+            <th>Name:</th>
+            <th>Category:</th>
+            <th>Date Checked Out:</th>
+            <th>Date Due:</th>
+            <th>Overdue?</th>
+            <th></th>
+          </tr>
+			{% for tool in tools_list %}
+          <tr>
+            <td>{{tool.name}}</td>
+            <td>{{tool.category}}</td>
+            <td>{{tool.date_checked_out}}</td>
+            <td>{{tool.get_due_date}}</td>
+            <td>
+              {% if tool.is_overdue %}
+              Yes
+              {% else %}
+              No
+              {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'Toolshop:check_in_tool' tool.id %}">Click here to check-in the tool.</a>
+            </td>
+          </tr>
+			{% endfor %}
+		</table>
+		{% else %}
+    		<p>No tools currently checked out.</p>
+		{% endif %}
 
     </div>
     <!-- / content body -->

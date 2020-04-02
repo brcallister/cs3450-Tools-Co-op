@@ -29,6 +29,7 @@
         <li><a href="{% url 'Toolshop:tools' %}">Our Tools</a></li>
         <li><a href="{% url 'Toolshop:projects' %}">Our Projects</a></li>
         <li><a href="{% url 'Toolshop:contact' %}">Contact Us!</a></li>
+        <li><a href="{% url 'Toolshop:reports_main' %}">Employee Portal</a></li>
       </ul>
     </nav>
   </header>
@@ -53,7 +54,7 @@
               {% for tool in tools_list %}
             <tr>
               <td>{{tool.name}}</td>
-              <td>{{tool.date_checked_out}}</td>
+              <td>{{tool.get_due_date}}</td>
             </tr>
               {% endfor %}
           </table>

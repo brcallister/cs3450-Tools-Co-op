@@ -45,10 +45,6 @@ def login_page(request):
 def account_page(request):
     user = request.user
     tools_list = Tool.objects.filter(who_checked_out__contains=user.username)
-    for tool in tools_list:
-        # Temporarily change the variable to represent the day the tool is due.
-        tool.date_checked_out = tool.date_checked_out + timedelta(days=7)
-        # Do NOT save the new data with Tool.save()
     context = {
         'user': user,
         'tools_list': tools_list
@@ -234,7 +230,10 @@ def reports_tools(request, sort_by):
 
 @permission_required('user.is_staff')
 def check_in_page(request):
-    context = {}
+    tools_list = Tool.objects.filter(is_checked_out=True)
+    context = {
+        'tools_list': tools_list,
+    }
     return render(request, 'Toolshop/reports_checkin.html', context)
 
 
@@ -245,9 +244,20 @@ def add_tool_page(request):
 
 
 @permission_required('user.is_staff')
-def check_in(request):
-    context = {}
-    return render(request, 'Toolshop/redirect.html', context)
+def check_in(request, tool_id):
+    tool = get_object_or_404(Tool, pk=tool_id)
+    current_user = get_object_or_404(CustomerInfo, user=request.user)
+    tool.is_checked_out = False
+    tool.date_checked_out = None
+    tool.who_checked_out = ""
+    tool.save()
+    current_user.num_currently_checked_out -= 1
+    current_user.save()
+    message = "Tool successfully checked-in! Redirecting..."
+    context = {
+        "message": message,
+    }
+    return render(request, 'Toolshop/reports_redirect.html', context)
 
 
 @permission_required('user.is_staff')

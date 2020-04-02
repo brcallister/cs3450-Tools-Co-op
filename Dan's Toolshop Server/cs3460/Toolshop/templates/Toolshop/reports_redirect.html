@@ -3,7 +3,7 @@
 <head>
 <title>Dan's Tool Rentals</title>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="3; url=http://127.0.0.1:8000/Toolshop/">
+    <meta http-equiv="refresh" content="1.5; url=http://127.0.0.1:8000/Toolshop/Employee/">
   {% load static %}
   <link rel="stylesheet" href="{% static 'Toolshop/layout.css' %}">
   <link rel="shortcut icon" type="image/png" href="{% static 'Toolshop/favicon.ico' %}"/>
@@ -12,25 +12,19 @@
 <div class="wrapper row1">
   <header id="header" class="clear">
     <div id="hgroup">
-      <h1><a href="{% url 'Toolshop:index' %}">Dan's Tool Shop
+      <h1><a href="{% url 'Toolshop:index' %}">Dan's Employee Portal
       <img src="{% static 'Toolshop/logo.jpg' %}" style="width:15%"></a></h1>
     </div>
-      <fieldset>
-        <div style="padding-right: 0px">
-          <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:account' %}">Account</a> </button>
-        </div>
-        <div style="padding-right: 110px">
-          <button class="menuButtons" style="height: 29.4px" "font:bold;"> <a href="{% url 'Toolshop:reserve' %}">Reserve a Tool</a> </button>
-        </div>
-      </fieldset>
 
     <nav>
       <ul>
-        <li><a href="{% url 'Toolshop:index' %}">Home</a></li>
-        <li><a href="{% url 'Toolshop:tools' %}">Our Tools</a></li>
-        <li><a href="{% url 'Toolshop:projects' %}">Our Projects</a></li>
-        <li><a href="{% url 'Toolshop:contact' %}">Contact Us!</a></li>
-        <li><a href="{% url 'Toolshop:reports_main' %}">Employee Portal</a></li>
+        <li><a href="{% url 'Toolshop:index' %}">Main Website</a></li>
+        <li><a href="{% url 'Toolshop:reports_users' %}">Users</a></li>
+        <li><a href="{% url 'Toolshop:reports_tools' sort_by='all' %}">Tools</a></li>
+        <li><a href="{% url 'Toolshop:reports_tools' sort_by='checked_out' %}">Tools (Checked out)</a></li>
+        <li><a href="{% url 'Toolshop:reports_tools' sort_by='popularity' %}">Tools (Popularity)</a></li>
+        <li><a href="{% url 'Toolshop:check_in' %}">Check Tools In</a></li>
+        <li><a href="{% url 'Toolshop:add_tool' %}">Add a tool</a></li>
       </ul>
     </nav>
   </header>
@@ -39,7 +33,7 @@
   <div id="container" class="clear">
 
     <section id="gallery" class="clear">
-        <h2>Your submission has been received! Redirecting to the main page...</h2>
+        <h2>{{message}}</h2>
     </section>
 
   </div>
