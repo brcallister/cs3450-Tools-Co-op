@@ -13,6 +13,12 @@ from django.contrib.auth.models import User
 from .models import Tool, CustomerInfo, Message
 
 
+'''
+THIS IS THE FEE WHEN A USER IS LATE RETURNING AN ITEM.  UPDATE IT HERE
+'''
+LATE_FEE = 5
+
+
 def index(request):  # Main page
     context = {}
     return render(request, 'Toolshop/index.html', context)
@@ -73,16 +79,19 @@ def reservation_page_specific(request, contains):  # This page has the results t
 
 @login_required
 def make_reservation(request, id):
+    context = {}
+    current_user = get_object_or_404(CustomerInfo, user=request.user)
+    if current_user.current_outstanding_balance > 0 or not current_user.this_period_paid:
+        return render(request, 'Toolshop/fees_overdue.html', context)
     tool = get_object_or_404(Tool, pk=id)
     tool.is_checked_out = True
     tool.times_checked_out += 1
     tool.date_checked_out = timezone.now()
     tool.who_checked_out = request.user.username
-    current_user = get_object_or_404(CustomerInfo, user=request.user)
     current_user.num_currently_checked_out += 1
     tool.save()
     current_user.save()
-    context = {}
+
     return render(request, 'Toolshop/redirect.html', context)
 
 
@@ -214,6 +223,24 @@ def reports_users(request):
 
 
 @permission_required('user.is_staff')
+def specific_user(request, user_id):
+    user = get_object_or_404(User, pk=user_id)
+    context = {
+        "user": user,
+    }
+    return render(request, 'Toolshop/reports_specificuser.html', context)
+
+
+@permission_required('user.is_staff')
+def specific_tool(request, tool_id):
+    tool = get_object_or_404(Tool, pk=tool_id)
+    context = {
+        "tool": tool,
+    }
+    return render(request, 'Toolshop/reports_specifictool.html', context)
+
+
+@permission_required('user.is_staff')
 def reports_tools(request, sort_by):
     if sort_by == "checked_out":
         tools_list = Tool.objects.filter(is_checked_out=True)
@@ -251,6 +278,8 @@ def check_in(request, tool_id):
     tool.date_checked_out = None
     tool.who_checked_out = ""
     tool.save()
+    if tool.is_overdue():
+        current_user.current_outstanding_balance += LATE_FEE
     current_user.num_currently_checked_out -= 1
     current_user.save()
     message = "Tool successfully checked-in! Redirecting..."

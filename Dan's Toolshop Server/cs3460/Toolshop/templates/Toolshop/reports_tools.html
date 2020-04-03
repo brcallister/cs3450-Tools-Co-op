@@ -45,7 +45,7 @@
           </tr>
 			{% for tool in tools_list %}
           <tr>
-            <td>{{tool.name}}</td>
+            <td><a href="{% url 'Toolshop:specific_tool' tool.id %}">{{tool.name}}</a></td>
             <td>{{tool.category}}</td>
             <td>{{tool.cost}}</td>
             <td>{{tool.times_checked_out}}</td>

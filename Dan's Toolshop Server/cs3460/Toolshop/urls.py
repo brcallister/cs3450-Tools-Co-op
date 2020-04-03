@@ -25,6 +25,8 @@ urlpatterns = [
     path('Employee/tools/<str:sort_by>', views.reports_tools, name='reports_tools'),
     path('Employee/check_in', views.check_in_page, name='check_in'),
     path('Employee/add_tool', views.add_tool_page, name='add_tool'),
+    path('Employee/viewTool/<int:tool_id>', views.specific_tool, name='specific_tool'),
+    path('Employee/viewUser/<int:user_id>', views.specific_tool, name='specific_user'),
 
     # Actions
     path('makeReservation/<int:id>', views.make_reservation, name='makeReservation'),

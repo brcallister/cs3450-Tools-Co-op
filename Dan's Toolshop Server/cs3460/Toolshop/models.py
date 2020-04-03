@@ -21,10 +21,19 @@ class Tool(models.Model):
         return self.name
 
     def get_due_date(self):
+        if self.date_checked_out is None or self.date_checked_out == "":
+            return False
         return self.date_checked_out + timedelta(days=7)
 
     def is_overdue(self):
+        if self.date_checked_out is None or self.date_checked_out == "":
+            return False
         return self.date_checked_out + timedelta(days=7) < timezone.now()
+
+    def is_condition_listed(self):
+        if self.condition == "":
+            return False
+        return True
 
 
 class CustomerInfo(models.Model):
