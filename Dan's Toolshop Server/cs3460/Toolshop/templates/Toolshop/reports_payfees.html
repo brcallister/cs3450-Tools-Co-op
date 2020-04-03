@@ -23,7 +23,7 @@
         <li><a href="{% url 'Toolshop:reports_tools' sort_by='checked_out' %}">Tools (Checked out)</a></li>
         <li><a href="{% url 'Toolshop:reports_tools' sort_by='popularity' %}">Tools (Popularity)</a></li>
         <li><a href="{% url 'Toolshop:check_in' %}">Check Tools In</a></li>
-        <li><a href="{% url 'Toolshop:add_tool' %}">Add a tool</a></li>
+        <li><a href="{% url 'Toolshop:pay_fee_page' %}">Pay Fees</a></li>
       </ul>
     </nav>
   </header>
@@ -34,39 +34,44 @@
     <!-- content body -->
     <!-- main content -->
     <div id="homepage">
-      <form action="{% url 'Toolshop:add_tool'%}" method="post">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <div class="container">  # TODO UPDATE MEEEEEEEEEEE!!
-
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname">
-            <br>
-            <br>
-
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname">
-            <br>
-            <br>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="emailAddress">
-            <br>
-            <br>
-
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject">
-            <br>
-            <br>
-
-            <textarea id="textBody" name="textBody" placeholder="Ask us questions and we'll get back to you!" style="height:200px"></textarea>
-            <br>
-            <br>
-
-            <input type="submit" value="Submit">
-            <br><br>
-          </div>
-        </form>
+      <h1> Fees Page:</h1>
+      <p>Once a user has paid in person, click on the link by their name to mark fees as paid.</p>
+      {% if users_list %}
+		<table cellspacing="20">
+          <tr>
+            <th>Username:</th>
+            <th>First Name:</th>
+            <th>Last Name:</th>
+            <th>Fees Due: </th>
+            <th>This Period Paid? </th>
+          </tr>
+			{% for user in users_list %}
+          <tr>
+            <td><a href="{% url 'Toolshop:specific_user' user.id %}">{{user.username}}</a></td>
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+            {% if user.customerinfo.current_outstanding_balance > 0 %}
+              <td style="color:red;">
+                <a href="{% url 'Toolshop:pay_fee' user.id %}">{{user.customerinfo.current_outstanding_balance}}</a>
+              </td>
+            {% else %}
+              <td>
+                {{user.customerinfo.current_outstanding_balance}}
+              </td>
+            {% endif %}
+            <td>
+              {% if user.customerinfo.this_period_paid %}
+              Yes.
+              {% else %}
+              <a href="{% url 'Toolshop:pay_period' user.id %}">No.</a>
+              {% endif %}
+            </td>
+          </tr>
+			{% endfor %}
+		</table>
+		{% else %}
+    		<p>No users found.</p>
+		{% endif %}
     </div>
     <!-- / content body -->
   </div>

@@ -27,13 +27,16 @@ urlpatterns = [
     path('Employee/add_tool', views.add_tool_page, name='add_tool'),
     path('Employee/viewTool/<int:tool_id>', views.specific_tool, name='specific_tool'),
     path('Employee/viewUser/<int:user_id>', views.specific_user, name='specific_user'),
+    path('fees/', views.pay_fee_page, name='pay_fee_page'),
 
     # Actions
     path('makeReservation/<int:id>', views.make_reservation, name='makeReservation'),
     path('submitMessage/', views.submit_message, name='submitMessage'),
     path('updateUserInfo/', views.update_user_info, name='update'),
     path('check_in_tool/<int:tool_id>', views.check_in, name='check_in_tool'),
-    path('add_tool/', views.add_tool, name='add_tool'),
+    path('payfees/<int:user_id>', views.pay_fee, name='pay_fee'),
+    path('payperiod/<int:user_id>', views.pay_period, name='pay_period'),
+
 
     # Misc urls
     path('redirect/', views.redirection_page, name='redirect'),

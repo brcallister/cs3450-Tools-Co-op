@@ -17,6 +17,10 @@ from .models import Tool, CustomerInfo, Message
 THIS IS THE FEE WHEN A USER IS LATE RETURNING AN ITEM.  UPDATE IT HERE
 '''
 LATE_FEE = 5
+'''
+THIS IS THE NUMBER OF DAYS A SUBSCRIPTION PAYS FOR.  UPDATE IT HERE
+'''
+SUB_DAYS = 30
 
 
 def index(request):  # Main page
@@ -215,7 +219,6 @@ def reports_main(request):
 @permission_required('user.is_staff')
 def reports_users(request):
     users_list = User.objects.all()
-
     context = {
         'users_list': users_list,
     }
@@ -267,7 +270,7 @@ def check_in_page(request):
 @permission_required('user.is_staff')
 def add_tool_page(request):
     context = {}
-    return render(request, 'Toolshop/reports_addtool.html', context)
+    return render(request, 'Toolshop/reports_payfees.html', context)
 
 
 @permission_required('user.is_staff')
@@ -290,7 +293,36 @@ def check_in(request, tool_id):
 
 
 @permission_required('user.is_staff')
-def add_tool(request):
-    context = {}
-    return render(request, 'Toolshop/redirect.html', context)
+def pay_fee_page(request):
+    users_list = User.objects.all().order_by('-customerinfo__current_outstanding_balance',
+                                             'customerinfo__this_period_paid')
+    context = {
+        'users_list': users_list,
+    }
+    return render(request, 'Toolshop/reports_payfees.html', context)
+
+
+@permission_required('user.is_staff')
+def pay_fee(request, user_id):
+    user = get_object_or_404(User, pk=user_id)
+    user.customerinfo.current_outstanding_balance = 0
+    user.customerinfo.save()
+    message = "Outstanding Fees successfully paid."
+    context = {
+        "message": message,
+    }
+    return render(request, 'Toolshop/reports_redirect.html', context)
+
+
+@permission_required('user.is_staff')
+def pay_period(request, user_id):
+    user = get_object_or_404(User, pk=user_id)
+    user.customerinfo.this_period_paid = True
+    user.customerinfo.date_paid_until = timezone.now() + timedelta(days=SUB_DAYS)
+    user.customerinfo.save()
+    message = "This period successfully paid."
+    context = {
+        "message": message,
+    }
+    return render(request, 'Toolshop/reports_redirect.html', context)
 
