@@ -80,7 +80,7 @@
         <tr>
           <td>This Period Paid? </td>
           <td>
-            {% if user.this_period_paid %}
+            {% if user.customerinfo.this_period_paid %}
             Yes.
             {% else %}
             No.
@@ -90,8 +90,8 @@
         <tr>
           <td>Date Paid Until? </td>
           <td>
-            {% if user.this_period_paid %}
-            {{user.date_paid_until}}
+            {% if user.customerinfo.this_period_paid %}
+            {{user.customerinfo.date_paid_until}}
             {% else %}
             Not currently subscribed.
             {% endif %}
