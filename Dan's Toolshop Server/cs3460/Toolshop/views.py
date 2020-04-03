@@ -104,11 +104,16 @@ def update_user_info(request):
     first_name = request.POST.get('firstName')
     last_name = request.POST.get('lastName')
     address = request.POST.get('address')
+    phone_number = request.POST.get('phone')
     email_address = request.POST.get('email')
     password_1 = request.POST.get('psw')
     password_2 = request.POST.get('psw-repeat')
 
     if password_1 != password_2:
+        return HttpResponseRedirect(reverse('Toolshop:updateError'))
+    elif phone_number is None:
+        return HttpResponseRedirect(reverse('Toolshop:updateError'))
+    elif phone_number == "":
         return HttpResponseRedirect(reverse('Toolshop:updateError'))
     elif first_name is None or last_name is None or address is None or email_address is None or password_1 is None:
         return HttpResponseRedirect(reverse('Toolshop:updateError'))
@@ -122,10 +127,12 @@ def update_user_info(request):
     user.first_name = first_name
     user.last_name = last_name
     user.email = email_address
-    user.address = address
+    user.customerinfo.address = address
+    user.customerinfo.phone_num = phone_number
     user.set_password(password_1)
 
     user.save()
+    user.customerinfo.save()
     # Always return an HttpResponseRedirect after successfully dealing
     # with POST data. This prevents data from being posted twice if a
     # user hits the Back button.

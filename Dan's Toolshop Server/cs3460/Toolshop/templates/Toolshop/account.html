@@ -44,6 +44,7 @@
         <p> First Name: {{user.first_name}}</p>
         <p> Last Name: {{user.last_name}}</p>
         <p> Address: {{user.customerinfo.address}}</p>
+        <p> Phone Number: {{user.customerinfo.phone_num}}</p>
         <p> Email: {{user.email}}</p>
         {% if tools_list %}
           <table cellspacing="10">
@@ -83,6 +84,11 @@
 
           <label for="address"><b>Address</b></label>
           <input type="text" placeholder="Address" name="address" required>
+          <br>
+          <br>
+
+          <label for="phone"><b>Phone Number</b></label>
+          <input type="text" placeholder="Phone Number" name="phone" required>
           <br>
           <br>
 
