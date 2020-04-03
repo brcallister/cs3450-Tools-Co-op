@@ -34,28 +34,93 @@
     <!-- content body -->
     <!-- main content -->
     <div id="homepage">
-      {% if users_list %}
-		<table cellspacing="20">
-          <tr>
-            <th>Username:</th>
-            <th>First Name:</th>
-            <th>Last Name:</th>
-            <th>Email:</th>
-            <th>Number of Tools Checked Out: </th>
-          </tr>
-			{% for user in users_list %}
-          <tr>
-            <td>{{user.username}}</td>
-            <td>{{user.first_name}}</td>
-            <td>{{user.last_name}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.customerinfo.num_currently_checked_out}}</td>
-          </tr>
-			{% endfor %}
-		</table>
-		{% else %}
-    		<p>No users found.</p>
-		{% endif %}
+      {% if user %}
+      <h1> {{user.username}}</h1>
+      <table cellspacing="20">
+        <tr>
+          <td>Name: </td>
+          <td>{{user.first_name}} {{user.last_name}}</td>
+        </tr>
+        <tr>
+          <td>Email: </td>
+          <td>{{user.email}}</td>
+        </tr>
+        <tr>
+          <td>Address: </td>
+          <td>
+            {% if user.customerinfo.is_address_listed %}
+            {{user.customerinfo.address}}
+            {% else %}
+            Not listed.
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td>Phone Number: </td>
+          <td>{{user.customerinfo.phone_num}}</td>
+        </tr>
+        <tr>
+          <td>Date Joined: </td>
+          <td>
+            {{user.date_joined}}
+          </td>
+      </table>
+      <h2> Account Status: </h2>
+      <table cellspacing="20">
+        <tr>
+          <td>Is Staff Member: </td>
+          <td>
+            {% if user.is_staff %}
+            Yes.
+            {% else %}
+            No.
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td>This Period Paid? </td>
+          <td>
+            {% if user.this_period_paid %}
+            Yes.
+            {% else %}
+            No.
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td>Date Paid Until? </td>
+          <td>
+            {% if user.this_period_paid %}
+            {{user.date_paid_until}}
+            {% else %}
+            Not currently subscribed.
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td>Number Currently Checked Out: </td>
+          <td>
+            {{user.customerinfo.num_currently_checked_out}}
+          </td>
+        </tr>
+        <tr>
+          <td>Current Outstanding Balance: </td>
+          {% if user.customerinfo.current_outstanding_balance > 0 %}
+          <td style="color:red;">
+            {{user.customerinfo.current_outstanding_balance}}
+          </td>
+          {% else %}
+          <td>
+            {{user.customerinfo.current_outstanding_balance}}
+          </td>
+          {% endif %}
+        </tr>
+      </table>
+
+
+      {% else %}
+        <p>No user found.  Please try again</p>
+      {% endif %}
     </div>
     <!-- / content body -->
   </div>

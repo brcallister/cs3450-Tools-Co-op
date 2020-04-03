@@ -46,6 +46,11 @@ class CustomerInfo(models.Model):
     num_currently_checked_out = models.PositiveIntegerField(default=0)
     current_outstanding_balance = models.PositiveIntegerField(blank=True, default=0)
 
+    def is_address_listed(self):
+        if self.address == "":
+            return False
+        return True
+
 
 class Message(models.Model):
     first_name = models.CharField(max_length=30)
