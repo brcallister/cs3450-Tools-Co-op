@@ -51,6 +51,16 @@ class CustomerInfo(models.Model):
             return False
         return True
 
+    def update_user_status(self):
+        if self.date_paid_until is None or self.date_paid_until == "":
+            return
+        if self.date_paid_until < timezone.now():
+            self.this_period_paid = False
+            self.date_paid_until = None
+            self.save()
+            return
+        return
+
 
 class Message(models.Model):
     first_name = models.CharField(max_length=30)

@@ -54,6 +54,7 @@ def login_page(request):
 @login_required
 def account_page(request):
     user = request.user
+    user.customerinfo.update_user_status()  # Make sure their paid period is not up
     tools_list = Tool.objects.filter(who_checked_out__contains=user.username)
     context = {
         'user': user,
@@ -85,6 +86,7 @@ def reservation_page_specific(request, contains):  # This page has the results t
 def make_reservation(request, id):
     context = {}
     current_user = get_object_or_404(CustomerInfo, user=request.user)
+    current_user.customerinfo.update_user_status()  # Make sure their paid period is not up
     if current_user.current_outstanding_balance > 0 or not current_user.this_period_paid:
         return render(request, 'Toolshop/fees_overdue.html', context)
     tool = get_object_or_404(Tool, pk=id)
@@ -101,6 +103,7 @@ def make_reservation(request, id):
 
 def update_user_info(request):
     user = request.user
+    user.customerinfo.update_user_status()  # Make sure their paid period is not up
     first_name = request.POST.get('firstName')
     last_name = request.POST.get('lastName')
     address = request.POST.get('address')
@@ -226,6 +229,8 @@ def reports_main(request):
 @permission_required('user.is_staff')
 def reports_users(request):
     users_list = User.objects.all()
+    for user in users_list:
+        user.customerinfo.update_user_status()  # Make sure their paid period is not up
     context = {
         'users_list': users_list,
     }
@@ -235,6 +240,7 @@ def reports_users(request):
 @permission_required('user.is_staff')
 def specific_user(request, user_id):
     user = get_object_or_404(User, pk=user_id)
+    user.customerinfo.update_user_status()  # Make sure their paid period is not up
     context = {
         "user": user,
     }
@@ -284,6 +290,7 @@ def add_tool_page(request):
 def check_in(request, tool_id):
     tool = get_object_or_404(Tool, pk=tool_id)
     current_user = get_object_or_404(CustomerInfo, user=request.user)
+    current_user.customerinfo.update_user_status()  # Make sure their paid period is not up
     tool.is_checked_out = False
     tool.date_checked_out = None
     tool.who_checked_out = ""
@@ -303,6 +310,8 @@ def check_in(request, tool_id):
 def pay_fee_page(request):
     users_list = User.objects.all().order_by('-customerinfo__current_outstanding_balance',
                                              'customerinfo__this_period_paid')
+    for user in users_list:
+        user.customerinfo.update_user_status()  # Make sure their paid period is not up
     context = {
         'users_list': users_list,
     }
