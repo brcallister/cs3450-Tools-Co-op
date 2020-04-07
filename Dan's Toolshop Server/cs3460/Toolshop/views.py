@@ -86,7 +86,7 @@ def reservation_page_specific(request, contains):  # This page has the results t
 def make_reservation(request, id):
     context = {}
     current_user = get_object_or_404(CustomerInfo, user=request.user)
-    current_user.customerinfo.update_user_status()  # Make sure their paid period is not up
+    current_user.update_user_status()  # Make sure their paid period is not up
     if current_user.current_outstanding_balance > 0 or not current_user.this_period_paid:
         return render(request, 'Toolshop/fees_overdue.html', context)
     tool = get_object_or_404(Tool, pk=id)
@@ -290,7 +290,7 @@ def add_tool_page(request):
 def check_in(request, tool_id):
     tool = get_object_or_404(Tool, pk=tool_id)
     current_user = get_object_or_404(CustomerInfo, user=request.user)
-    current_user.customerinfo.update_user_status()  # Make sure their paid period is not up
+    current_user.update_user_status()  # Make sure their paid period is not up
     tool.is_checked_out = False
     tool.date_checked_out = None
     tool.who_checked_out = ""
