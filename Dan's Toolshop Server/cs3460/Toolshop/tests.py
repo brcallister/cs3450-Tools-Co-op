@@ -100,6 +100,8 @@ class ToolShopTest(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
         self.user = User.objects.create_user("test", "test@test.com", "testpassword")
+        c = CustomerInfo(user=self.user, current_outstanding_balance=0, this_period_paid=True)
+        c.save()
         self.client.login(username="test", password="testpassword")
         response = self.client.get(url)
         self.assertContains(response, t)
@@ -110,7 +112,7 @@ class ToolShopTest(TestCase):
         t = self.create_tool()
         t.save()
         self.user = User.objects.create_user("test", "test@test.com", "testpassword")
-        c = CustomerInfo(user=self.user)
+        c = CustomerInfo(user=self.user, current_outstanding_balance=0, this_period_paid=True)
         c.save()
         self.client.login(username="test", password="testpassword")
         url = reverse('Toolshop:makeReservation', kwargs={'id': t.id})
@@ -135,29 +137,37 @@ class ToolShopTest(TestCase):
         self.assertEqual(response['location'], reverse('Toolshop:redirect'))
 
     def test_update_user_no_data(self):
+        self.user = User.objects.create_user("test", "test@test.com", "testpassword")
+        c = CustomerInfo(user=self.user, current_outstanding_balance=0, this_period_paid=True)
+        c.save()
+        self.client.login(username="test", password="testpassword")
         url = reverse('Toolshop:update')
         response = self.client.post(url, {})
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], reverse('Toolshop:updateError'))
 
     def test_update_user_with_data(self):
-        url = reverse('Toolshop:update')
         self.user = User.objects.create_user("test", "test@test.com", "testpassword")
+        c = CustomerInfo(user=self.user, current_outstanding_balance=0, this_period_paid=True)
+        c.save()
         self.client.login(username="test", password="testpassword")
+        url = reverse('Toolshop:update')
         response = self.client.post(url, {'firstName': 'test', 'lastName': 'testLast',
                                                  'address': '1234 N 344 E',
-                                                 'email': 'test@test.com',
+                                                 'email': 'test@test.com', 'phone': "1234567890",
                                                  'psw': 'password', 'psw-repeat': 'password'})
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], reverse('Toolshop:redirect'))
 
     def test_update_user_wrong_data(self):
-        url = reverse('Toolshop:update')
         self.user = User.objects.create_user("test", "test@test.com", "testpassword")
+        c = CustomerInfo(user=self.user, current_outstanding_balance=0, this_period_paid=True)
+        c.save()
         self.client.login(username="test", password="testpassword")
+        url = reverse('Toolshop:update')
         response = self.client.post(url, {'firstName': 'test', 'lastName': 'testLast',
                                                  'address': '1234 N 344 E',
-                                                 'email': 'test@test.com',
+                                                 'email': 'test@test.com', 'phone': "1234567890",
                                                  'psw': 'password', 'psw-repeat': 'word'})
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], reverse('Toolshop:updateError'))
