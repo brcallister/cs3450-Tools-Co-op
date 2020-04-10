@@ -31,13 +31,6 @@ for the main page, and
 
 for the admin page.
 
-## Password protected content
-
-Several pages on the website are locked by a login page, through which only a registered account can proceed.  An account has been set up for testing purposes while the website is still under development.
-
-Username: danwatson
-Password: test12345
-
 ## Running Unit Tests
 
 In order to run our server's unit tests, once again navigate to the folder that houses the file "manage.py", and run the following command in the command prompt:
@@ -45,3 +38,25 @@ In order to run our server's unit tests, once again navigate to the folder that 
 `python manage.py test Toolshop`
 
 The unit tests will then run autonomously, reporting on their status as they go.
+
+## Website Functionality and Usage
+
+The website is split into three parts.
+
+1. The customer pages.
+2. The staff pages.
+3. The admin pages.
+
+The customer pages are found at `127.0.0.1:8000/Toolshop`, and consist of several unlocked information pages, as well as a password-protected account page, and password-protected reservation page.  The account page gives the customer userful information, allows them to update their account information, and actually reserve tools from the company.
+
+The staff pages are accessed through the "Employee Portal" link, and can only be logged into by company employees.  The staff pages allow company employees to view user/tool information, check tools in, and settle fees on user accounts.
+
+The admin page is for company owners/managers and require a staff account to log in.  The admin pages allow you to view, add to, and edit all company information stored in the database, including customer information, tool information, and messages sent through the "Contact Us" page of the website.
+
+## Password protected content
+
+Several pages on the website are locked by a login page, through which only a registered account can proceed.  An account has been set up for testing purposes while the website is still under development.
+
+Username: danwatson
+Password: test12345
+
