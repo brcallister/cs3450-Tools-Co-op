@@ -43,7 +43,7 @@
         <hr>
         <br>
         <div style="text-align:center">
-          <form method="post" id="form_login">
+          <form method="post" id="form_login" class="username">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Login</button>
